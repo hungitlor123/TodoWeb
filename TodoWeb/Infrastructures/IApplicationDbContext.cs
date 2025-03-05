@@ -11,6 +11,9 @@ public interface IApplicationDbContext
     public DbSet<School> School { get; set; }
     
     public DbSet<CourseStudent> CourseStudent { get; set; }
+    
+     public DbSet<StudentGrade> StudentGrades { get; set; } 
+
 
     public DbSet<Course> Course { get; set; }
 
