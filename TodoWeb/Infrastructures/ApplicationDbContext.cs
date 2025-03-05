@@ -19,6 +19,9 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     public DbSet<CourseStudent> CourseStudent { get; set; }
 
     public DbSet<Course> Course { get; set; }
+    
+    public DbSet<StudentGrade> StudentGrades { get; set; } // Sử dụng số nhiều để nhất quán
+
 
 
     public DbSet<School> School { get; set; }
@@ -32,28 +35,37 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        
+        modelBuilder.Entity<CourseStudent>()
+            .HasKey(cs => new { cs.CourseId, cs.StudentId });
+
+        
+        modelBuilder.Entity<StudentGrade>()
+            .HasOne(sg => sg.CourseStudent)
+            .WithOne(cs => cs.StudentGrade)
+            .HasForeignKey<StudentGrade>(sg => new { sg.CourseId, sg.StudentId }) 
+            .OnDelete(DeleteBehavior.Cascade);
+
+        
         modelBuilder.Entity<Student>()
             .Property(x => x.Age)
             .HasComputedColumnSql("DATEDIFF(YEAR, DateOfBirth, GETDATE())");
+
         modelBuilder.Entity<Student>()
             .HasMany(student => student.CourseStudents)
-            .WithOne(student => student.Student)
-            .HasForeignKey(courseStudent => courseStudent.StudentId);
-        
+            .WithOne(cs => cs.Student)
+            .HasForeignKey(cs => cs.StudentId);
+
         modelBuilder.Entity<Course>()
             .HasMany(course => course.CourseStudents)
-            .WithOne(course => course.Course)
-            .HasForeignKey(courseStudent => courseStudent.CourseId);
-        
-        modelBuilder.Entity<CourseStudent>()
-            .HasKey(courseStudent => new { courseStudent.CourseId, courseStudent.StudentId });
+            .WithOne(cs => cs.Course)
+            .HasForeignKey(cs => cs.CourseId);
 
+        
         modelBuilder.ApplyConfiguration(new CourseMapping());
-        
+
         base.OnModelCreating(modelBuilder);
-        
-    }
-    
+    }    
         
 
     public int SaveChanges()

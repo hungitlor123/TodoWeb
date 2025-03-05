@@ -14,6 +14,7 @@ builder.Services.AddTransient<IGuidGenerator, GuidGenerator>();
 builder.Services.AddScoped<IStudentService, StudentService>();
 builder.Services.AddScoped<ISchoolService, SchoolService>();
 builder.Services.AddScoped<ICourseService, CourseService>();
+builder.Services.AddScoped<IStudentGradeService, StudentGradeService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
