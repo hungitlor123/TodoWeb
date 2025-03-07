@@ -52,4 +52,10 @@ public class SchoolController : ControllerBase
 
         return 0;
     }
+
+    [HttpGet("{schoolId}/detail")]
+    public SchoolStudentViewModel GetSchoolDetail(int schoolId)
+    {
+        return _schoolService.GetSchoolDetail(schoolId);
+    }
 }
