@@ -81,19 +81,22 @@ public class StudentService : IStudentService
 
     public StudentViewModel CreateStudent(StudentCreateViewModel studentCreateViewModel)
     {
-        var school = _dbcontext.School.FirstOrDefault(s => s.Name == studentCreateViewModel.SchoolName);
+        var school = _dbcontext.School
+            .AsNoTracking()
+            .FirstOrDefault(s => s.Id == studentCreateViewModel.SchoolId);
 
         if (school == null)
         {
             throw new ArgumentException("School not found");
         }
-        bool isIdExists = _dbcontext.Student.Any(s => s.Id == studentCreateViewModel.StudentId);
+
+        bool isIdExists = _dbcontext.Student
+            .Any(s => s.Id == studentCreateViewModel.StudentId);
 
         if (isIdExists)
         {
             throw new ArgumentException("Student ID already exists!");
         }
-        
 
         var newStudent = new Student
         {
@@ -101,19 +104,21 @@ public class StudentService : IStudentService
             FirstName = studentCreateViewModel.FirstName,
             LastName = studentCreateViewModel.LastName,
             DateOfBirth = studentCreateViewModel.DateOfBirth,
-            School = school
+            SId = school.Id // Chỉ gán ID, không gán trực tiếp đối tượng School
         };
-        
+
         _dbcontext.Student.Add(newStudent);
         _dbcontext.SaveChanges();
+
         return new StudentViewModel
         {
             Id = newStudent.Id,
-            FullName = newStudent.FirstName + " " + newStudent.LastName,
+            FullName = $"{newStudent.FirstName} {newStudent.LastName}",
             Age = newStudent.Age,
-            SchoolName = newStudent.School.Name,
+            SchoolName = school.Name, // Dùng school trực tiếp, tránh truy xuất lại từ newStudent
         };
     }
+
 
     public StudentViewModel UpdateStudent(int id ,StudentUpdateViewModel studentUpdateViewModel)
     {

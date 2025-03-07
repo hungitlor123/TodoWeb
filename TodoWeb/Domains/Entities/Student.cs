@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace TodoWeb.Domains.Entities
 {
@@ -35,6 +36,7 @@ namespace TodoWeb.Domains.Entities
         [ForeignKey("School")]
         public int SId { get; set; }
         
+        [JsonIgnore]
         public virtual School School { get; set; }
         
         public virtual ICollection<CourseStudent> CourseStudents { get; set; }
