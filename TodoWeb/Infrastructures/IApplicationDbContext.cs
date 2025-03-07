@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using TodoWeb.Domains.Entities;
 
 namespace TodoWeb.Infrastructures;
@@ -16,6 +17,12 @@ public interface IApplicationDbContext
 
 
     public DbSet<Course> Course { get; set; }
+    
+    public DbSet<AuditLog> AuditLog { get; set; }
+    
+    public EntityEntry<T> Entry<T>(T entity) where T : class;
 
     public int SaveChanges();
+    
+    
 }

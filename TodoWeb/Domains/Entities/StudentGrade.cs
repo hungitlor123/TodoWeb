@@ -13,7 +13,7 @@ public class StudentGrade
     public int StudentId { get; set; }
 
     [ForeignKey("CourseId, StudentId")]
-    public CourseStudent CourseStudent { get; set; }
+    public virtual CourseStudent CourseStudent { get; set; }
 
     public double AssignmentScore { get; set; }
     public double PracticalScore { get; set; }

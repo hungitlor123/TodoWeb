@@ -168,3 +168,5 @@ E:\Hoc\.Net\Ok\TodoWeb\TodoWeb\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.S
 E:\Hoc\.Net\Ok\TodoWeb\TodoWeb\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 E:\Hoc\.Net\Ok\TodoWeb\TodoWeb\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 E:\Hoc\.Net\Ok\TodoWeb\TodoWeb\obj\Debug\net8.0\TodoWeb.sourcelink.json
+E:\Hoc\.Net\Ok\TodoWeb\TodoWeb\bin\Debug\net8.0\Castle.Core.dll
+E:\Hoc\.Net\Ok\TodoWeb\TodoWeb\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Proxies.dll
