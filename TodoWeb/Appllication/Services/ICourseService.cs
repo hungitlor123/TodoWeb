@@ -112,7 +112,7 @@ public class CourseService : ICourseService
         var course = new Course
         {
             Name = courseCreateModel.Name,
-            StartDate = courseCreateModel.StartDate,
+            StartDate = courseCreateModel.StartDate
         };
         _dbcontext.Course.Add(course);
         _dbcontext.SaveChanges();
@@ -120,7 +120,7 @@ public class CourseService : ICourseService
         {
             CourseId = course.Id,
             CourseName = course.Name,
-            StartDate = DateTime.Now
+            StartDate = course.StartDate,
         };
     }
 
@@ -132,7 +132,9 @@ public class CourseService : ICourseService
         _dbcontext.SaveChanges();
         return new CourseViewModel
         {
+            CourseId = course.Id,
             CourseName = course.Name,
+            StartDate = course.StartDate,
         };
     }
 

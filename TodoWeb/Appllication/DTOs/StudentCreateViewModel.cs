@@ -9,5 +9,5 @@ public class StudentCreateViewModel
     
     public DateTime DateOfBirth { get; set; }
     
-    public string SchoolName { get; set; }
+    public int SchoolId { get; set; }
 }

@@ -1,11 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace TodoWeb.Domains.Entities
 {
     [Table("Students")]   
     
-    public class Student
+    public class Student : ISoftDelete
     {
         [Key]
 
@@ -35,8 +36,13 @@ namespace TodoWeb.Domains.Entities
         [ForeignKey("School")]
         public int SId { get; set; }
         
+        [JsonIgnore]
         public virtual School School { get; set; }
         
         public virtual ICollection<CourseStudent> CourseStudents { get; set; }
+        
+        public int? DeletedBy { get; set; }
+            
+        public DateTime? DeletedAt { get; set; }
     }
 }

@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace TodoWeb.Domains.Entities;
 
 public class School
@@ -8,5 +10,6 @@ public class School
     
     public string Address { get; set; }
     
+    [JsonIgnore]
     public virtual ICollection<Student> Students { get; set; }
 }
