@@ -80,3 +80,6 @@ WHERE [c].[Id] = @__id_0
 2025-03-14 18:34:04 | 7 ms | SELECT [MigrationId], [ProductVersion]
 FROM [__EFMigrationsHistory]
 ORDER BY [MigrationId];
+2025-03-14 18:41:00 | 8 ms | SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];

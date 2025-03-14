@@ -1,6 +1,6 @@
 namespace TodoWeb.Domains.Entities;
 
-public class Course
+public class Course : ISoftDelete
 {
     public int Id { get; set; }
     
@@ -17,4 +17,7 @@ public class Course
     public int UpdatedBy { get; set; }
     
     public DateTime UpdatedAt { get; set; }
+    
+    public int? DeletedBy { get; set; }
+    public DateTime? DeletedAt { get; set; }
 }

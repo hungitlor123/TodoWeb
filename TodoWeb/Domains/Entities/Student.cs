@@ -6,7 +6,7 @@ namespace TodoWeb.Domains.Entities
 {
     [Table("Students")]   
     
-    public class Student
+    public class Student : ISoftDelete
     {
         [Key]
 
@@ -40,5 +40,9 @@ namespace TodoWeb.Domains.Entities
         public virtual School School { get; set; }
         
         public virtual ICollection<CourseStudent> CourseStudents { get; set; }
+        
+        public int? DeletedBy { get; set; }
+            
+        public DateTime? DeletedAt { get; set; }
     }
 }

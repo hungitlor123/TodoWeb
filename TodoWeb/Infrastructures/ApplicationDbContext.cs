@@ -69,42 +69,28 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
 
         
         modelBuilder.ApplyConfiguration(new CourseMapping());
+        modelBuilder.Entity<Student>().HasQueryFilter(s => s.DeletedAt == null);
+        modelBuilder.Entity<Course>().HasQueryFilter(c => c.DeletedAt == null);
 
         base.OnModelCreating(modelBuilder);
     }    
         
 
-    public int SaveChanges()
+    public override int SaveChanges()
     {
-       /*var auditLogs = new List<AuditLog>();
-        foreach (var entity in ChangeTracker.Entries()) {
-            var log = new AuditLog
-            {
-                EntityName = entity.Entity.GetType().Name,
-                CreateAt = DateTime.Now,
-                Action = entity.State.ToString(),
-                
-            };
-        if (entity.State == EntityState.Added)
+        foreach (var entry in ChangeTracker.Entries<ISoftDelete>().Where(e => e.State == EntityState.Deleted))
         {
-        log.NewValue = JsonSerializer.Serialize(entity.CurrentValues.ToObject());
-        }
-        if (entity.State == EntityState.Modified)
-        {
-        log.OldValue = JsonSerializer.Serialize(entity.OriginalValues.ToObject());
-        log.NewValue = JsonSerializer.Serialize(entity.CurrentValues.ToObject());
-        }
-        if (entity.State == EntityState.Deleted)
-        {
-        log.OldValue = JsonSerializer.Serialize(entity.OriginalValues.ToObject());
-        }
-        auditLogs.Add(log);
+            entry.State = EntityState.Modified;
 
-    }
-        AuditLog.AddRange(auditLogs); //state Addede
-        */
+            entry.Entity.DeletedAt = DateTime.UtcNow;
+            entry.Entity.DeletedBy = GetCurrentUserId();
+        }
 
         return base.SaveChanges();
+    }
+    private int GetCurrentUserId()
+    {
+        return 1; 
     }
 
     public EntityEntry<T> Entry<T>(T entity) where T : class
