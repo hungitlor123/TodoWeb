@@ -1,0 +1,82 @@
+SELECT [c].[Id] AS [CourseId], [c].[Name] AS [CourseName], [c].[StartDate]
+FROM [Course] AS [c]
+2025-03-10 20:07:47 | 49 ms | SELECT [c].[Id] AS [CourseId], [c].[Name] AS [CourseName], [c].[StartDate]
+FROM [Course] AS [c]
+2025-03-10 20:08:01 | 9 ms | SELECT [s].[Id], [s].[Name], [s].[Address]
+FROM [School] AS [s]
+2025-03-10 20:26:00 | 63 ms | SELECT [c].[Id] AS [CourseId], [c].[Name] AS [CourseName], [c].[StartDate]
+FROM [Course] AS [c]
+2025-03-10 20:27:04 | 25 ms | SELECT [c].[CourseId], [c].[StudentId]
+FROM [CourseStudent] AS [c]
+WHERE [c].[CourseId] = @__p_0
+2025-03-10 20:27:04 | 8 ms | SET NOCOUNT ON;
+INSERT INTO [AuditLog] ([Action], [CreateAt], [EntityName], [NewValue], [OldValue])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+INSERT INTO [Course] ([Name], [StartDate])
+OUTPUT INSERTED.[Id]
+VALUES (@p5, @p6);
+
+2025-03-10 20:28:09 | 3 ms | SET NOCOUNT ON;
+INSERT INTO [AuditLog] ([Action], [CreateAt], [EntityName], [NewValue], [OldValue])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+UPDATE [Course] SET [Name] = @p5
+OUTPUT 1
+WHERE [Id] = @p6;
+
+2025-03-10 20:53:18 | 61 ms | SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Course] ([Name], [StartDate])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1);
+
+2025-03-10 20:53:19 | 3 ms | SELECT [c].[CourseId], [c].[StudentId]
+FROM [CourseStudent] AS [c]
+WHERE [c].[CourseId] = @__p_0
+2025-03-10 20:53:19 | 3 ms | SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AuditLog] ([Action], [CreateAt], [EntityName], [NewValue], [OldValue])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+
+2025-03-10 20:53:43 | 3 ms | SET NOCOUNT ON;
+INSERT INTO [AuditLog] ([Action], [CreateAt], [EntityName], [NewValue], [OldValue])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+UPDATE [Course] SET [Name] = @p5
+OUTPUT 1
+WHERE [Id] = @p6;
+
+2025-03-10 20:57:05 | 48 ms | SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Course] ([Name], [StartDate])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1);
+
+2025-03-10 20:57:05 | 4 ms | SELECT [c].[CourseId], [c].[StudentId]
+FROM [CourseStudent] AS [c]
+WHERE [c].[CourseId] = @__p_0
+2025-03-10 20:57:24 | 3 ms | SET NOCOUNT ON;
+INSERT INTO [AuditLog] ([Action], [CreateAt], [EntityName], [NewValue], [OldValue])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+UPDATE [Course] SET [Name] = @p5
+OUTPUT 1
+WHERE [Id] = @p6;
+
+2025-03-10 21:17:52 | 58 ms | SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Course] ([Name], [StartDate])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1);
+
+2025-03-10 21:17:52 | 3 ms | SELECT [c].[CourseId], [c].[StudentId]
+FROM [CourseStudent] AS [c]
+WHERE [c].[CourseId] = @__p_0
+2025-03-10 21:18:09 | 3 ms | SELECT TOP(1) [c].[Id], [c].[Name], [c].[StartDate]
+FROM [Course] AS [c]
+WHERE [c].[Id] = @__id_0
+2025-03-14 18:34:04 | 7 ms | SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];

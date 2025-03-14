@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using TodoWeb.Domains.Entities;
 using TodoWeb.Infrastructures.DatabaseMapping;
+using TodoWeb.Infrastructures.Interceptors;
 
 namespace TodoWeb.Infrastructures;
 
@@ -34,7 +35,9 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     {
         optionsBuilder.UseLazyLoadingProxies();
         optionsBuilder.UseSqlServer("Server=HUNGNEEE\\HUNGIT;Initial Catalog=ToDoApp;Persist Security Info=False;User ID=sa;Password=12345;MultipleActiveResultSets=True;Encrypt=True;TrustServerCertificate=True;Connection Timeout=30;");
-    }
+        optionsBuilder.AddInterceptors(new SqlQueryLoggingInterceptor(), new AuditLogInterceptor());
+        
+    }   
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -73,7 +76,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
 
     public int SaveChanges()
     {
-       var auditLogs = new List<AuditLog>();
+       /*var auditLogs = new List<AuditLog>();
         foreach (var entity in ChangeTracker.Entries()) {
             var log = new AuditLog
             {
@@ -99,6 +102,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
 
     }
         AuditLog.AddRange(auditLogs); //state Addede
+        */
 
         return base.SaveChanges();
     }

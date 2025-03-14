@@ -9,4 +9,12 @@ public class Course
     public DateTime StartDate { get; set; }
     
     public virtual ICollection<CourseStudent> CourseStudents { get; set; }
+    
+    public int CreatedBy { get; set; }
+    
+    public DateTime CreatedAt { get; set; }
+    
+    public int UpdatedBy { get; set; }
+    
+    public DateTime UpdatedAt { get; set; }
 }

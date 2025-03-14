@@ -37,6 +37,14 @@
           "SelectedChildIndex": 6,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "StudentGrade.cs",
@@ -46,16 +54,7 @@
               "RelativeToolTip": "TodoWeb\\Domains\\Entities\\StudentGrade.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T14:10:18.409Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+              "WhenOpened": "2025-03-07T14:10:18.409Z"
             },
             {
               "$type": "Document",
@@ -67,8 +66,7 @@
               "RelativeToolTip": "TodoWeb\\Domains\\Entities\\Student.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T14:10:18.969Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-07T14:10:18.969Z"
             },
             {
               "$type": "Document",
@@ -80,8 +78,7 @@
               "RelativeToolTip": "TodoWeb\\Infrastructures\\IApplicationDbContext.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAABMAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T14:03:53.616Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-07T14:03:53.616Z"
             },
             {
               "$type": "Document",
@@ -93,8 +90,7 @@
               "RelativeToolTip": "TodoWeb\\Domains\\Entities\\AuditLog.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAA5wA4AAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T14:01:59.687Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-07T14:01:59.687Z"
             },
             {
               "$type": "Document",
@@ -119,8 +115,7 @@
               "RelativeToolTip": "TodoWeb\\Appllication\\Services\\ISchoolService.cs",
               "ViewState": "AQIAADAAAAAAAAAAAAAkwD4AAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T13:57:21.691Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-07T13:57:21.691Z"
             }
           ]
         }
