@@ -83,3 +83,139 @@ ORDER BY [MigrationId];
 2025-03-14 18:41:00 | 8 ms | SELECT [MigrationId], [ProductVersion]
 FROM [__EFMigrationsHistory]
 ORDER BY [MigrationId];
+2025-03-14 19:26:02 | 48 ms | SELECT [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[Name], [c].[StartDate], [c].[UpdatedAt], [c].[UpdatedBy]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL
+2025-03-14 19:27:50 | 44 ms | SELECT [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[Name], [c].[StartDate], [c].[UpdatedAt], [c].[UpdatedBy]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL
+2025-03-14 19:31:33 | 48 ms | SELECT [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[Name], [c].[StartDate], [c].[UpdatedAt], [c].[UpdatedBy]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL
+2025-03-14 19:33:48 | 50 ms | SELECT [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[Name], [c].[StartDate], [c].[UpdatedAt], [c].[UpdatedBy]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL
+2025-03-14 19:36:06 | 44 ms | SELECT [c].[Id], [c].[Name], [c].[StartDate]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL
+2025-03-14 19:38:57 | 48 ms | SELECT [c].[StartDate]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL
+2025-03-14 19:45:50 | 49 ms | SELECT [c].[Id] AS [CourseId], [c].[Name] AS [CourseName], [c].[StartDate]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL
+2025-03-14 19:51:28 | 60 ms | SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Course] ([CreatedAt], [CreatedBy], [DeletedAt], [DeletedBy], [Name], [StartDate], [UpdatedAt], [UpdatedBy])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+
+2025-03-14 19:51:28 | 4 ms | SELECT [c].[CourseId], [c].[StudentId]
+FROM [CourseStudent] AS [c]
+WHERE [c].[CourseId] = @__p_0
+2025-03-14 19:51:28 | 3 ms | SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AuditLog] ([Action], [CreateAt], [EntityName], [NewValue], [OldValue])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+
+2025-03-14 19:52:40 | 44 ms | SELECT [c].[Id] AS [CourseId], [c].[Name] AS [CourseName], [c].[StartDate]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL
+2025-03-14 19:52:56 | 22 ms | SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Course] ([CreatedAt], [CreatedBy], [DeletedAt], [DeletedBy], [Name], [StartDate], [UpdatedAt], [UpdatedBy])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7);
+
+2025-03-14 19:52:56 | 3 ms | SELECT [c].[CourseId], [c].[StudentId]
+FROM [CourseStudent] AS [c]
+WHERE [c].[CourseId] = @__p_0
+2025-03-14 19:52:56 | 3 ms | SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AuditLog] ([Action], [CreateAt], [EntityName], [NewValue], [OldValue])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+
+2025-03-14 20:23:03 | 45 ms | SELECT [c].[Id] AS [CourseId], [c].[Name] AS [CourseName], [c].[StartDate]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL
+2025-03-14 20:23:22 | 23 ms | SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[Name], [c].[StartDate], [c].[UpdatedAt], [c].[UpdatedBy]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL AND [c].[Id] = @__id_0
+2025-03-14 20:26:17 | 45 ms | SELECT [c].[Id] AS [CourseId], [c].[Name] AS [CourseName], [c].[StartDate]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL
+2025-03-14 20:26:37 | 21 ms | SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[Name], [c].[StartDate], [c].[UpdatedAt], [c].[UpdatedBy]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL AND [c].[Id] = @__id_0
+2025-03-14 20:26:37 | 4 ms | SET NOCOUNT ON;
+INSERT INTO [AuditLog] ([Action], [CreateAt], [EntityName], [NewValue], [OldValue])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+UPDATE [Course] SET [Name] = @p5
+OUTPUT 1
+WHERE [Id] = @p6;
+
+2025-03-14 20:34:55 | 62 ms | SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[Name], [c].[StartDate], [c].[UpdatedAt], [c].[UpdatedBy]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL AND [c].[Id] = @__id_0
+2025-03-14 20:35:15 | 5 ms | SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[Name], [c].[StartDate], [c].[UpdatedAt], [c].[UpdatedBy]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL AND [c].[Id] = @__id_0
+2025-03-14 20:48:55 | 58 ms | SELECT [s].[Id], [s].[Age], [s].[Balance], [s].[DateOfBirth], [s].[DeletedAt], [s].[DeletedBy], [s].[FirstName], [s].[Surname], [s].[SId], [s0].[Id], [s0].[Address], [s0].[Name]
+FROM [Students] AS [s]
+INNER JOIN [School] AS [s0] ON [s].[SId] = [s0].[Id]
+WHERE [s].[DeletedAt] IS NULL
+2025-03-14 20:49:06 | 20 ms | SELECT [s].[Id], [s].[Age], [s].[Balance], [s].[DateOfBirth], [s].[DeletedAt], [s].[DeletedBy], [s].[FirstName], [s].[Surname], [s].[SId], [s0].[Id], [s0].[Address], [s0].[Name]
+FROM [Students] AS [s]
+INNER JOIN [School] AS [s0] ON [s].[SId] = [s0].[Id]
+WHERE [s].[DeletedAt] IS NULL AND [s0].[Id] = @__schoolId_0
+2025-03-14 20:56:35 | 65 ms | SELECT [s0].[Id], [s0].[Age], [s0].[Balance], [s0].[DateOfBirth], [s0].[DeletedAt], [s0].[DeletedBy], [s0].[FirstName], [s0].[Surname], [s0].[SId], [s1].[CourseId], [s1].[StudentId], [s1].[Id], [s1].[CreatedAt], [s1].[CreatedBy], [s1].[DeletedAt], [s1].[DeletedBy], [s1].[Name], [s1].[StartDate], [s1].[UpdatedAt], [s1].[UpdatedBy]
+FROM (
+    SELECT TOP(1) [s].[Id], [s].[Age], [s].[Balance], [s].[DateOfBirth], [s].[DeletedAt], [s].[DeletedBy], [s].[FirstName], [s].[Surname], [s].[SId]
+    FROM [Students] AS [s]
+    WHERE [s].[DeletedAt] IS NULL AND [s].[Id] = @__id_0
+) AS [s0]
+LEFT JOIN (
+    SELECT [c].[CourseId], [c].[StudentId], [c1].[Id], [c1].[CreatedAt], [c1].[CreatedBy], [c1].[DeletedAt], [c1].[DeletedBy], [c1].[Name], [c1].[StartDate], [c1].[UpdatedAt], [c1].[UpdatedBy]
+    FROM [CourseStudent] AS [c]
+    INNER JOIN (
+        SELECT [c0].[Id], [c0].[CreatedAt], [c0].[CreatedBy], [c0].[DeletedAt], [c0].[DeletedBy], [c0].[Name], [c0].[StartDate], [c0].[UpdatedAt], [c0].[UpdatedBy]
+        FROM [Course] AS [c0]
+        WHERE [c0].[DeletedAt] IS NULL
+    ) AS [c1] ON [c].[CourseId] = [c1].[Id]
+) AS [s1] ON [s0].[Id] = [s1].[StudentId]
+ORDER BY [s0].[Id], [s1].[CourseId], [s1].[StudentId]
+2025-03-14 20:56:57 | 3 ms | SELECT [s0].[Id], [s0].[Age], [s0].[Balance], [s0].[DateOfBirth], [s0].[DeletedAt], [s0].[DeletedBy], [s0].[FirstName], [s0].[Surname], [s0].[SId], [s1].[CourseId], [s1].[StudentId], [s1].[Id], [s1].[CreatedAt], [s1].[CreatedBy], [s1].[DeletedAt], [s1].[DeletedBy], [s1].[Name], [s1].[StartDate], [s1].[UpdatedAt], [s1].[UpdatedBy]
+FROM (
+    SELECT TOP(1) [s].[Id], [s].[Age], [s].[Balance], [s].[DateOfBirth], [s].[DeletedAt], [s].[DeletedBy], [s].[FirstName], [s].[Surname], [s].[SId]
+    FROM [Students] AS [s]
+    WHERE [s].[DeletedAt] IS NULL AND [s].[Id] = @__id_0
+) AS [s0]
+LEFT JOIN (
+    SELECT [c].[CourseId], [c].[StudentId], [c1].[Id], [c1].[CreatedAt], [c1].[CreatedBy], [c1].[DeletedAt], [c1].[DeletedBy], [c1].[Name], [c1].[StartDate], [c1].[UpdatedAt], [c1].[UpdatedBy]
+    FROM [CourseStudent] AS [c]
+    INNER JOIN (
+        SELECT [c0].[Id], [c0].[CreatedAt], [c0].[CreatedBy], [c0].[DeletedAt], [c0].[DeletedBy], [c0].[Name], [c0].[StartDate], [c0].[UpdatedAt], [c0].[UpdatedBy]
+        FROM [Course] AS [c0]
+        WHERE [c0].[DeletedAt] IS NULL
+    ) AS [c1] ON [c].[CourseId] = [c1].[Id]
+) AS [s1] ON [s0].[Id] = [s1].[StudentId]
+ORDER BY [s0].[Id], [s1].[CourseId], [s1].[StudentId]
+2025-03-14 20:59:31 | 63 ms | SELECT [s0].[Id], [s0].[Age], [s0].[Balance], [s0].[DateOfBirth], [s0].[DeletedAt], [s0].[DeletedBy], [s0].[FirstName], [s0].[Surname], [s0].[SId], [s1].[CourseId], [s1].[StudentId], [s1].[Id], [s1].[CreatedAt], [s1].[CreatedBy], [s1].[DeletedAt], [s1].[DeletedBy], [s1].[Name], [s1].[StartDate], [s1].[UpdatedAt], [s1].[UpdatedBy]
+FROM (
+    SELECT TOP(1) [s].[Id], [s].[Age], [s].[Balance], [s].[DateOfBirth], [s].[DeletedAt], [s].[DeletedBy], [s].[FirstName], [s].[Surname], [s].[SId]
+    FROM [Students] AS [s]
+    WHERE [s].[DeletedAt] IS NULL AND [s].[Id] = @__id_0
+) AS [s0]
+LEFT JOIN (
+    SELECT [c].[CourseId], [c].[StudentId], [c1].[Id], [c1].[CreatedAt], [c1].[CreatedBy], [c1].[DeletedAt], [c1].[DeletedBy], [c1].[Name], [c1].[StartDate], [c1].[UpdatedAt], [c1].[UpdatedBy]
+    FROM [CourseStudent] AS [c]
+    INNER JOIN (
+        SELECT [c0].[Id], [c0].[CreatedAt], [c0].[CreatedBy], [c0].[DeletedAt], [c0].[DeletedBy], [c0].[Name], [c0].[StartDate], [c0].[UpdatedAt], [c0].[UpdatedBy]
+        FROM [Course] AS [c0]
+        WHERE [c0].[DeletedAt] IS NULL
+    ) AS [c1] ON [c].[CourseId] = [c1].[Id]
+) AS [s1] ON [s0].[Id] = [s1].[StudentId]
+ORDER BY [s0].[Id], [s1].[CourseId], [s1].[StudentId]

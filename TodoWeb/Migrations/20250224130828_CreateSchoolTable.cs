@@ -41,7 +41,7 @@ namespace TodoWeb.Migrations
                 table: "Students",
                 column: "SId",
                 principalTable: "School",
-                principalColumn: "Id",
+                principalColumn: "CourseId",
                 onDelete: ReferentialAction.Cascade);
         }
 

@@ -12,7 +12,7 @@ namespace TodoWeb.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<string>(
-                name: "Name",
+                name: "CourseName",
                 table: "Course",
                 type: "nvarchar(255)",
                 maxLength: 255,
@@ -36,7 +36,7 @@ namespace TodoWeb.Migrations
                 table: "Course");
 
             migrationBuilder.AlterColumn<string>(
-                name: "Name",
+                name: "CourseName",
                 table: "Course",
                 type: "nvarchar(max)",
                 nullable: false,
