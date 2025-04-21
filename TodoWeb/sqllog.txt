@@ -89,3 +89,31 @@ WHERE [c].[DeletedAt] IS NULL
 2025-04-21 15:15:24 | 6 ms | SELECT [MigrationId], [ProductVersion]
 FROM [__EFMigrationsHistory]
 ORDER BY [MigrationId];
+2025-04-21 16:13:35 | 45 ms | SELECT [e].[Id], [e].[CourseId], [e].[DeletedAt], [e].[DeletedBy], [e].[ExamDate], [e].[Name], [e].[QuestionIds], [e].[TimeLimitInMinutes]
+FROM [Exam] AS [e]
+2025-04-21 16:14:30 | 5 ms | SELECT [e].[Id], [e].[CourseId], [e].[DeletedAt], [e].[DeletedBy], [e].[ExamDate], [e].[Name], [e].[QuestionIds], [e].[TimeLimitInMinutes]
+FROM [Exam] AS [e]
+2025-04-21 16:18:33 | 28 ms | SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Exam] ([CourseId], [DeletedAt], [DeletedBy], [ExamDate], [Name], [QuestionIds], [TimeLimitInMinutes])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+
+2025-04-21 16:18:33 | 3 ms | SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AuditLog] ([Action], [CreateAt], [EntityName], [NewValue], [OldValue])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+
+2025-04-21 16:19:27 | 3 ms | SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Exam] ([CourseId], [DeletedAt], [DeletedBy], [ExamDate], [Name], [QuestionIds], [TimeLimitInMinutes])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+
+2025-04-21 16:19:27 | 3 ms | SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AuditLog] ([Action], [CreateAt], [EntityName], [NewValue], [OldValue])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+

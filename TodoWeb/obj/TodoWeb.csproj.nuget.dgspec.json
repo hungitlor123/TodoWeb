@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Hoc\\.Net\\Ok\\TodoWeb1\\TodoWeb\\TodoWeb.csproj": {}
+    "E:\\Hoc\\.Net\\Ok\\TodoWeb\\TodoWeb\\TodoWeb.csproj": {}
   },
   "projects": {
-    "E:\\Hoc\\.Net\\Ok\\TodoWeb1\\TodoWeb\\TodoWeb.csproj": {
+    "E:\\Hoc\\.Net\\Ok\\TodoWeb\\TodoWeb\\TodoWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Hoc\\.Net\\Ok\\TodoWeb1\\TodoWeb\\TodoWeb.csproj",
+        "projectUniqueName": "E:\\Hoc\\.Net\\Ok\\TodoWeb\\TodoWeb\\TodoWeb.csproj",
         "projectName": "TodoWeb",
-        "projectPath": "E:\\Hoc\\.Net\\Ok\\TodoWeb1\\TodoWeb\\TodoWeb.csproj",
+        "projectPath": "E:\\Hoc\\.Net\\Ok\\TodoWeb\\TodoWeb\\TodoWeb.csproj",
         "packagesPath": "C:\\Users\\84973\\.nuget\\packages\\",
-        "outputPath": "E:\\Hoc\\.Net\\Ok\\TodoWeb1\\TodoWeb\\obj\\",
+        "outputPath": "E:\\Hoc\\.Net\\Ok\\TodoWeb\\TodoWeb\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\84973\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,5 +1,8 @@
 using AutoMapper;
 using TodoWeb.Application.DTOs;
+using TodoWeb.Application.DTOs.Exam;
+using TodoWeb.Application.DTOs.ExamResult;
+using TodoWeb.Application.DTOs.Question;
 using TodoWeb.Domains.Entities;
 
 namespace TodoWeb.Appllication.MapperProfiles;
@@ -30,7 +33,30 @@ public class TodoProfile : Profile
             .ForMember(dest => dest.StudentId, x => x.MapFrom(src => src.Id))
             .ForMember(dest => dest.StudentName, x => x.MapFrom(src => $"{src.FirstName} {src.LastName}"))
             .ForMember(dest => dest.Courses, x => x.MapFrom(src => src.CourseStudents.Select(cs => cs.Course)));
+        //Exam
+        
+        CreateMap<ExamCreateModel, Exam>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore());
+        CreateMap<Exam, ExamViewModel>();
+        CreateMap<ExamUpdateModel, Exam>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore());
+        CreateMap<StudentExamSubmission, ExamResult>();
+        
+        //Question
+        CreateMap<QuestionCreateModel, QuestionBank>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore());
+        CreateMap<QuestionBank, QuestionViewModel>();
+        CreateMap<QuestionUpdateModel, QuestionBank>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore());
+        
+        //ExamResult
+        CreateMap<ExamResultCreateModel, ExamResult>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore());
+        CreateMap<ExamResult, ExamResultViewModel>();
+        CreateMap<ExamResultUpdateModel, ExamResult>()
+            .ForMember(dest => dest.Id, opt => opt.Ignore());
     }
+    
     
     
 }
