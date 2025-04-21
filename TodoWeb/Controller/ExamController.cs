@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using TodoWeb.Application.DTOs.Exam;
 using TodoWeb.Application.Services;
+using TodoWeb.Appllication.Common;
+using TodoWeb.Appllication.Params;
 
 namespace TodoWeb.Controller;
 
@@ -50,11 +52,12 @@ public class ExamController : ControllerBase
     }
     
     [HttpGet]
-    public ActionResult GetExams()
+    public ActionResult<PagaResult<ExamViewModel>> GetExams([FromQuery] ExamQueryParameters queryParameters)
     {
-        var exams = _examService.GetExams();
-        return Ok(exams);
+        var result = _examService.GetExams(queryParameters);
+        return Ok(result);
     }
+
     
     [HttpPut("{id}")]
     public ActionResult UpdateExam(int id, [FromBody] ExamUpdateModel exam)

@@ -1,6 +1,8 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using TodoWeb.Application.DTOs;
+using TodoWeb.Appllication.Common;
+using TodoWeb.Appllication.Params;
 using TodoWeb.Domains.Entities;
 using TodoWeb.Infrastructures;
 
@@ -8,7 +10,7 @@ namespace TodoWeb.Application.Services;
 
  public interface IStudentService
 {
-     public IEnumerable<StudentViewModel> GetStudents(int? schoolId);
+    PagaResult<StudentViewModel> GetStudents(StudentQueryParameters queryParameters);
 
      StudentCourseViewModel GetStudentDetails(int id);
 
@@ -32,30 +34,62 @@ public class StudentService : IStudentService
         _mapper = mapper;
     }
 
-    public IEnumerable<StudentViewModel> GetStudents(int? schoolId)
+    public PagaResult<StudentViewModel> GetStudents(StudentQueryParameters queryParameters)
     {
-        //SELECT * FORM Student
-        //join School ON Student.SId = School.CourseId
         var query = _dbcontext.Student
-            .Include(student => student.School)
+            .Include(s => s.School)
             .AsQueryable();
-        if (schoolId != null)
+
+        // Lọc theo SchoolId nếu có
+        if (queryParameters.SchoolId != null)
         {
-            //SELECT * FORM Student
-            //join School ON Student.SId = School.CourseId
-            //WHERE School.CourseId = SchoolId   
-            query = query.Where(s => s.School.Id == schoolId);
+            query = query.Where(s => s.School.Id == queryParameters.SchoolId);
         }
-        //SELECT * FORM Student
-            //Student.CourseId
-            //Student.FristName + Student.LastName AS FullName
-            //Student.Age , Student.SchoolName AS SchoolName
-        //FORM Student
-            //join School ON Student.SId = School.CourseId
-        //WHERE School.CourseId = SchoolId (depend if schoolId is not null)
-        var students = query.ToList();
-        return _mapper.Map<List<StudentViewModel>>(students);
+
+        // Tìm kiếm theo FullName
+        if (!string.IsNullOrWhiteSpace(queryParameters.Keyword))
+        {
+            query = query.Where(s =>
+                (s.FirstName + " " + s.LastName).Contains(queryParameters.Keyword));
         }
+
+        // Sắp xếp theo SortBy
+        query = queryParameters.SortBy.ToLower() switch
+        {
+            "fullname" => queryParameters.SortDesc
+                ? query.OrderByDescending(s => s.FirstName + " " + s.LastName)
+                : query.OrderBy(s => s.FirstName + " " + s.LastName),
+            "age" => queryParameters.SortDesc ? query.OrderByDescending(s => s.Age) : query.OrderBy(s => s.Age),
+            "balance" => queryParameters.SortDesc ? query.OrderByDescending(s => s.Balance) : query.OrderBy(s => s.Balance),
+            _ => queryParameters.SortDesc ? query.OrderByDescending(s => s.Id) : query.OrderBy(s => s.Id)
+        };
+
+        var totalItems = query.Count();
+
+        var students = query
+            .Skip((queryParameters.PageIndex - 1) * queryParameters.PageSize)
+            .Take(queryParameters.PageSize)
+            .ToList();
+
+        var viewModels = students.Select(s => new StudentViewModel
+        {
+            Id = s.Id,
+            FullName = s.FirstName + " " + s.LastName,
+            Age = s.Age,
+            Balance = s.Balance,
+            SchoolName = s.School.Name
+        }).ToList();
+
+        return new PagaResult<StudentViewModel>
+        {
+            TotalItems = totalItems,
+            PageIndex = queryParameters.PageIndex,
+            PageSize = queryParameters.PageSize,
+            TotalPages = (int)Math.Ceiling(totalItems / (double)queryParameters.PageSize),
+            Items = viewModels
+        };
+    }
+
 
     public StudentViewModel GetStudent(int studentId)
     {

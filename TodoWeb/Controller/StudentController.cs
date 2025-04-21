@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using TodoWeb.Application.DTOs;
 using TodoWeb.Application.Services;
+using TodoWeb.Appllication.Common;
+using TodoWeb.Appllication.Params;
 
 namespace TodoWeb.Controller;
 
@@ -23,10 +25,12 @@ public class StudentController : ControllerBase
     }
 
     [HttpGet]
-    public IEnumerable<StudentViewModel> GetStudents(int? schoolId)
+    public ActionResult<PagaResult<StudentViewModel>> GetStudents([FromQuery] StudentQueryParameters queryParameters)
     {
-        return _studentService.GetStudents(schoolId);
+        var result = _studentService.GetStudents(queryParameters);
+        return Ok(result);
     }
+
 
     [HttpGet("{id}")]
     public StudentViewModel? GetStudent(int id)

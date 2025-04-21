@@ -1,5 +1,7 @@
 using AutoMapper;
 using TodoWeb.Application.DTOs.Question;
+using TodoWeb.Appllication.Common;
+using TodoWeb.Appllication.Params;
 using TodoWeb.Domains.Entities;
 using TodoWeb.Infrastructures;
 
@@ -13,7 +15,7 @@ public interface IQuestionService
 
     QuestionViewModel GetQuestion(int id);
 
-    IEnumerable<QuestionViewModel> GetQuestions();
+    PagaResult<QuestionViewModel> GetQuestions(QuestionQueryParameters queryParameters);
 
     QuestionBank UpdateQuestion(int id, QuestionUpdateModel question);
 }
@@ -57,12 +59,41 @@ public class QuestionService : IQuestionService
         return _mapper.Map<QuestionViewModel>(question);
        
     }
-    public IEnumerable<QuestionViewModel> GetQuestions()
+    public PagaResult<QuestionViewModel> GetQuestions(QuestionQueryParameters queryParameters)
     {
-        var questions = _dbContext.QuestionBank.ToList();
-        return _mapper.Map<IEnumerable<QuestionViewModel>>(questions);
-        
+        var query = _dbContext.QuestionBank.AsQueryable();
+
+        // Tìm kiếm theo từ khóa trong nội dung câu hỏi
+        if (!string.IsNullOrWhiteSpace(queryParameters.Keyword))
+        {
+            query = query.Where(q => q.QuestionText.Contains(queryParameters.Keyword));
+        }
+
+        // Sắp xếp theo trường chỉ định
+        query = queryParameters.SortBy.ToLower() switch
+        {
+            "questiontext" => queryParameters.SortDesc ? query.OrderByDescending(q => q.QuestionText) : query.OrderBy(q => q.QuestionText),
+            _ => queryParameters.SortDesc ? query.OrderByDescending(q => q.Id) : query.OrderBy(q => q.Id)
+        };
+
+        var totalItems = query.Count();
+
+        var items = _mapper
+            .ProjectTo<QuestionViewModel>(query
+                .Skip((queryParameters.PageIndex - 1) * queryParameters.PageSize)
+                .Take(queryParameters.PageSize))
+            .ToList();
+
+        return new PagaResult<QuestionViewModel>
+        {
+            TotalItems = totalItems,
+            PageIndex = queryParameters.PageIndex,
+            PageSize = queryParameters.PageSize,
+            TotalPages = (int)Math.Ceiling(totalItems / (double)queryParameters.PageSize),
+            Items = items
+        };
     }
+
     public QuestionBank UpdateQuestion(int id, QuestionUpdateModel question)
     {
         var data = _dbContext.QuestionBank.FirstOrDefault(q => q.Id == id); 
