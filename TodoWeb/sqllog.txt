@@ -83,3 +83,9 @@ ORDER BY [MigrationId];
 2025-03-14 18:41:00 | 8 ms | SELECT [MigrationId], [ProductVersion]
 FROM [__EFMigrationsHistory]
 ORDER BY [MigrationId];
+2025-04-21 15:07:40 | 80 ms | SELECT [c].[Id] AS [CourseId], [c].[Name] AS [CourseName], [c].[StartDate]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL
+2025-04-21 15:15:24 | 6 ms | SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];

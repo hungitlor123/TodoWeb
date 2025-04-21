@@ -24,7 +24,12 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     public DbSet<Course> Course { get; set; }
     
     public DbSet<StudentGrade> StudentGrades { get; set; } // Sử dụng số nhiều để nhất quán
-
+    
+    public DbSet<Exam> Exam { get; set; }
+    
+    public DbSet<ExamResult> ExamResult { get; set; }
+    
+    public DbSet<QuestionBank> QuestionBank { get; set; }
     public DbSet<AuditLog> AuditLog { get; set; }
 
     public DbSet<School> School { get; set; }

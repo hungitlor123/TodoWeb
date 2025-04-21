@@ -14,7 +14,12 @@ public interface IApplicationDbContext
     public DbSet<CourseStudent> CourseStudent { get; set; }
     
      public DbSet<StudentGrade> StudentGrades { get; set; } 
-
+    
+     public DbSet<Exam> Exam { get; set; }
+    
+     public DbSet<ExamResult> ExamResult { get; set; }
+    
+     public DbSet<QuestionBank> QuestionBank { get; set; }
 
     public DbSet<Course> Course { get; set; }
     

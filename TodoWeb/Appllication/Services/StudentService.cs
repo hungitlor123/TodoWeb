@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using TodoWeb.Application.DTOs;
 using TodoWeb.Domains.Entities;
@@ -23,41 +24,37 @@ namespace TodoWeb.Application.Services;
 public class StudentService : IStudentService
 {
     private readonly IApplicationDbContext _dbcontext;
+    private readonly IMapper _mapper;
 
-    public StudentService(IApplicationDbContext dbcontext)
+    public StudentService(IApplicationDbContext dbcontext, IMapper mapper)
     {
         _dbcontext = dbcontext;
+        _mapper = mapper;
     }
 
     public IEnumerable<StudentViewModel> GetStudents(int? schoolId)
     {
         //SELECT * FORM Student
-        //join School ON Student.SId = School.Id
+        //join School ON Student.SId = School.CourseId
         var query = _dbcontext.Student
             .Include(student => student.School)
             .AsQueryable();
         if (schoolId != null)
         {
             //SELECT * FORM Student
-            //join School ON Student.SId = School.Id
-            //WHERE School.Id = SchoolId   
+            //join School ON Student.SId = School.CourseId
+            //WHERE School.CourseId = SchoolId   
             query = query.Where(s => s.School.Id == schoolId);
         }
         //SELECT * FORM Student
-            //Student.Id
+            //Student.CourseId
             //Student.FristName + Student.LastName AS FullName
             //Student.Age , Student.SchoolName AS SchoolName
         //FORM Student
-            //join School ON Student.SId = School.Id
-        //WHERE School.Id = SchoolId (depend if schoolId is not null)
-        return query.Select(s => new StudentViewModel
-            {
-                Id = s.Id,
-                FullName = s.FirstName + " " + s.LastName,
-                Age = s.Age,
-                SchoolName = s.School.Name,
-
-            }).ToList();
+            //join School ON Student.SId = School.CourseId
+        //WHERE School.CourseId = SchoolId (depend if schoolId is not null)
+        var students = query.ToList();
+        return _mapper.Map<List<StudentViewModel>>(students);
         }
 
     public StudentViewModel GetStudent(int studentId)
@@ -176,22 +173,16 @@ public class StudentService : IStudentService
 
     public StudentCourseViewModel GetStudentDetails(int id)
     {
-        var student = _dbcontext.Student.Include(s => s.CourseStudents).ThenInclude(cs => cs.Course).FirstOrDefault(s => s.Id == id);
+        var student = _dbcontext.Student.
+            Include(s => s.CourseStudents).
+            ThenInclude(cs => cs.Course).FirstOrDefault(s => s.Id == id);
 
-        return new StudentCourseViewModel
+        if (student == null)
         {
-            StudentId = student.Id,
-            StudentName = student.FirstName + " " + student.LastName,
-            Courses = student.CourseStudents.Select(x => new CourseViewModel
-            {
-                CourseId = x.CourseId,
-                CourseName = x.Course.Name,
-                StartDate = x.Course.StartDate,
-                
-                
-            }).ToList()
-            
-        };
+            return null;
+        }
+        
+        return _mapper.Map<StudentCourseViewModel>(student);
     }
     
 }
