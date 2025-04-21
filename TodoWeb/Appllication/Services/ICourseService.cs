@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using TodoWeb.Application.DTOs;
 using TodoWeb.Domains.Entities;
@@ -27,21 +28,29 @@ public interface ICourseService
 public class CourseService : ICourseService
 {
     private readonly IApplicationDbContext _dbcontext;
+    private readonly IMapper _mapper;
 
-    public CourseService(IApplicationDbContext dbcontext)
+    public CourseService(IApplicationDbContext dbcontext,IMapper mapper)
     {
         _dbcontext = dbcontext;
+        _mapper = mapper;
     }
 
     public IEnumerable<CourseViewModel> GetAllCourses()
     {
-        var course = _dbcontext.Course.Select(c => new CourseViewModel
-        {
-            CourseId = c.Id,
-            CourseName = c.Name,
-            StartDate = c.StartDate,
-        }).ToList();
-        return course;
+        var query = _dbcontext.Course.AsQueryable();
+        
+        /*var course = _dbcontext.Course.ToList();
+        var result = course.
+            Select(course => _mapper.Map<CourseViewModel>(course)).
+            ToList();
+        var result = _mapper.Map<List<CourseViewModel>>(course);*/
+        
+        var result = _mapper.
+            ProjectTo<CourseViewModel>(query).
+            ToList();
+        
+        return result;
     }
 
     public CourseViewModel GetCourseById(int id)
@@ -78,18 +87,18 @@ public class CourseService : ICourseService
     /*public CourseReponseModel CourseDetail2(int id)
     {
         var course = _dbcontext.Course
-            .Where(c => c.Id == id)
+            .Where(c => c.CourseId == id)
             .Include(c => c.CourseStudents)
             .ThenInclude(cs => cs.Student)
             .FirstOrDefault();
 
         return new CourseReponseModel
         {
-            Id = course.Id,
-            Name = course.Name,
+            CourseId = course.CourseId,
+            CourseName = course.CourseName,
             Students = course.CourseStudents.Select(cs => new StudentViewModel
             {
-                Id = cs.Student.Id,
+                CourseId = cs.Student.CourseId,
                 FullName = cs.Student.FirstName + " " + cs.Student.LastName
             }).ToList() 
         };
@@ -109,33 +118,30 @@ public class CourseService : ICourseService
     }
     public CourseViewModel CreateCourse(CourseCreateModel courseCreateModel)
     {
-        var course = new Course
-        {
-            Name = courseCreateModel.Name,
-            StartDate = courseCreateModel.StartDate
-        };
+        var course = _mapper.Map<Course>(courseCreateModel);
         _dbcontext.Course.Add(course);
         _dbcontext.SaveChanges();
-        return new CourseViewModel
-        {
-            CourseId = course.Id,
-            CourseName = course.Name,
-            StartDate = course.StartDate,
-        };
+        
+        var courseViewModel = _mapper.Map<CourseViewModel>(course);
+        
+        return courseViewModel;
     }
 
     public CourseViewModel UpdateCourse(int id,CourseUpdateModel courseUpdateModel)
     {
         var course = _dbcontext.Course.FirstOrDefault(c => c.Id == id);
-        course.Name = courseUpdateModel.Name;
+        if (course == null)
+        {
+            return null;
+        }
+        if (string.IsNullOrEmpty(courseUpdateModel.Name))
+        {
+            throw new ArgumentException("Course name cannot be null or empty.");
+        }
+        _mapper.Map(courseUpdateModel, course);
         
         _dbcontext.SaveChanges();
-        return new CourseViewModel
-        {
-            CourseId = course.Id,
-            CourseName = course.Name,
-            StartDate = course.StartDate,
-        };
+        return _mapper.Map<CourseViewModel>(course);
     }
 
     public bool DeleteCourse(int id)

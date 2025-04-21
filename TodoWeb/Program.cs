@@ -1,4 +1,5 @@
 ﻿using TodoWeb.Application.Services;
+using TodoWeb.Appllication.MapperProfiles;
 using TodoWeb.Infrastructures;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,10 @@ builder.Services.AddScoped<IStudentService, StudentService>();
 builder.Services.AddScoped<ISchoolService, SchoolService>();
 builder.Services.AddScoped<ICourseService, CourseService>();
 builder.Services.AddScoped<IStudentGradeService, StudentGradeService>();
+
+
+builder.Services.AddAutoMapper(typeof(TodoProfile));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
