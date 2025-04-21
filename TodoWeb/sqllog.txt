@@ -117,3 +117,20 @@ INSERT INTO [AuditLog] ([Action], [CreateAt], [EntityName], [NewValue], [OldValu
 OUTPUT INSERTED.[Id]
 VALUES (@p0, @p1, @p2, @p3, @p4);
 
+2025-04-21 17:20:14 | 49 ms | SELECT COUNT(*)
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL
+2025-04-21 17:20:14 | 24 ms | SELECT [c].[Id] AS [CourseId], [c].[Name] AS [CourseName], [c].[StartDate]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL
+ORDER BY [c].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-04-21 17:21:10 | 9 ms | SELECT COUNT(*)
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL
+2025-04-21 17:21:24 | 4 ms | SELECT COUNT(*)
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL AND [c].[Name] LIKE @__queryParameters_Keyword_0_contains ESCAPE N'\'
+2025-04-21 17:21:45 | 3 ms | SELECT COUNT(*)
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL

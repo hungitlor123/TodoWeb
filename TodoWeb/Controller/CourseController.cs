@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using TodoWeb.Application.DTOs;
 using TodoWeb.Application.Services;
+using TodoWeb.Appllication.Common;
+using TodoWeb.Appllication.Params;
 using TodoWeb.Domains.Entities;
 
 namespace TodoWeb.Controller;
@@ -16,11 +18,11 @@ public class CourseController : ControllerBase
     }
 
     [HttpGet]
-    public IEnumerable<CourseViewModel> GetAllCourses()
+    public ActionResult<PagaResult<CourseViewModel>> GetAllCourses([FromQuery] CourseQueryParameters queryParameters)
     {
-        return _courseService.GetAllCourses();
+        var result = _courseService.GetAllCourses(queryParameters);
+        return Ok(result);
     }
-
     [HttpGet("{id}")]
     public CourseViewModel GetCourseById(int id)
     {

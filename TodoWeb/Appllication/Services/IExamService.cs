@@ -2,6 +2,8 @@ using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using TodoWeb.Application.DTOs.Exam;
 using TodoWeb.Application.DTOs.ExamResult;
+using TodoWeb.Appllication.Common;
+using TodoWeb.Appllication.Params;
 using TodoWeb.Domains.Entities;
 using TodoWeb.Infrastructures;
 
@@ -15,7 +17,7 @@ public interface IExamService
 
     ExamViewModel GetExam(int id);
 
-    IEnumerable<ExamViewModel> GetExams();
+    PagaResult<ExamViewModel> GetExams(ExamQueryParameters queryParameters);
 
     Exam UpdateExam(int id, ExamUpdateModel examUpdateModel);
 
@@ -60,11 +62,44 @@ public class ExamService : IExamService
         return _mapper.Map<ExamViewModel>(data);
     }
 
-    public IEnumerable<ExamViewModel> GetExams()
+    public PagaResult<ExamViewModel> GetExams(ExamQueryParameters queryParameters)
     {
-        var exams = _dbcontext.Exam.ToList();
-        return _mapper.Map<IEnumerable<ExamViewModel>>(exams);
+        var query = _dbcontext.Exam.AsQueryable();
+
+        // Tìm kiếm theo tên kỳ thi
+        if (!string.IsNullOrWhiteSpace(queryParameters.Keyword))
+        {
+            query = query.Where(e => e.Name.Contains(queryParameters.Keyword));
+        }
+
+        // Sắp xếp theo trường được chọn
+        query = queryParameters.SortBy.ToLower() switch
+        {
+            "name" => queryParameters.SortDesc ? query.OrderByDescending(e => e.Name) : query.OrderBy(e => e.Name),
+            "examdate" => queryParameters.SortDesc ? query.OrderByDescending(e => e.ExamDate) : query.OrderBy(e => e.ExamDate),
+            "timelimitinminutes" => queryParameters.SortDesc ? query.OrderByDescending(e => e.TimeLimitInMinutes) : query.OrderBy(e => e.TimeLimitInMinutes),
+            _ => queryParameters.SortDesc ? query.OrderByDescending(e => e.Id) : query.OrderBy(e => e.Id)
+        };
+
+        var totalItems = query.Count();
+
+        var items = _mapper
+            .ProjectTo<ExamViewModel>(query
+                .Skip((queryParameters.PageIndex - 1) * queryParameters.PageSize)
+                .Take(queryParameters.PageSize))
+            .ToList();
+
+        return new PagaResult<ExamViewModel>
+        {
+            TotalItems = totalItems,
+            PageIndex = queryParameters.PageIndex,
+            PageSize = queryParameters.PageSize,
+            TotalPages = (int)Math.Ceiling(totalItems / (double)queryParameters.PageSize),
+            Items = items
+        };
     }
+
+
     public Exam UpdateExam(int id, ExamUpdateModel examUpdateModel)
     {
         var data = _dbcontext.Exam.FirstOrDefault(x => x.Id == id);

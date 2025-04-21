@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using TodoWeb.Application.DTOs;
 using TodoWeb.Application.Services;
+using TodoWeb.Appllication.Common;
+using TodoWeb.Appllication.Params;
 
 namespace TodoWeb.Controller;
 
@@ -17,10 +19,13 @@ public class SchoolController : ControllerBase
     }
 
     [HttpGet]
-    public IEnumerable<SchoolViewModel> GetAllSchools()
+    [HttpGet]
+    public ActionResult<PagaResult<SchoolViewModel>> GetAllSchools([FromQuery] SchoolQueryParameters queryParameters)
     {
-        return _schoolService.GetAllSchools();
+        var schools = _schoolService.GetAllSchools(queryParameters);
+        return Ok(schools);
     }
+
 
     [HttpGet("{id}")]
     public SchoolViewModel GetSchoolById(int id)

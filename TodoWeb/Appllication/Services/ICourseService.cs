@@ -1,6 +1,8 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using TodoWeb.Application.DTOs;
+using TodoWeb.Appllication.Common;
+using TodoWeb.Appllication.Params;
 using TodoWeb.Domains.Entities;
 using TodoWeb.Infrastructures;
 
@@ -10,7 +12,7 @@ public interface ICourseService
 {
     CourseViewModel GetCourseById(int id);
 
-    IEnumerable<CourseViewModel> GetAllCourses();
+    PagaResult<CourseViewModel> GetAllCourses(CourseQueryParameters queryParameters);
 
     CourseViewModel CreateCourse(CourseCreateModel courseCreateModel);
 
@@ -36,22 +38,42 @@ public class CourseService : ICourseService
         _mapper = mapper;
     }
 
-    public IEnumerable<CourseViewModel> GetAllCourses()
+    public PagaResult<CourseViewModel> GetAllCourses(CourseQueryParameters queryParameters)
     {
         var query = _dbcontext.Course.AsQueryable();
-        
-        /*var course = _dbcontext.Course.ToList();
-        var result = course.
-            Select(course => _mapper.Map<CourseViewModel>(course)).
-            ToList();
-        var result = _mapper.Map<List<CourseViewModel>>(course);*/
-        
-        var result = _mapper.
-            ProjectTo<CourseViewModel>(query).
-            ToList();
-        
-        return result;
+
+        // Tìm kiếm theo tên khóa học
+        if (!string.IsNullOrWhiteSpace(queryParameters.Keyword))
+        {
+            query = query.Where(c => c.Name.Contains(queryParameters.Keyword));
+        }
+
+        // Sắp xếp theo trường được chọn
+        query = queryParameters.SortBy.ToLower() switch
+        {
+            "coursename" => queryParameters.SortDesc ? query.OrderByDescending(c => c.Name) : query.OrderBy(c => c.Name),
+            "startdate" => queryParameters.SortDesc ? query.OrderByDescending(c => c.StartDate) : query.OrderBy(c => c.StartDate),
+            _ => queryParameters.SortDesc ? query.OrderByDescending(c => c.Id) : query.OrderBy(c => c.Id)
+        };
+
+        var totalItems = query.Count();
+
+        var items = _mapper
+            .ProjectTo<CourseViewModel>(query
+                .Skip((queryParameters.PageIndex - 1) * queryParameters.PageSize)
+                .Take(queryParameters.PageSize))
+            .ToList();
+
+        return new PagaResult<CourseViewModel>
+        {
+            TotalItems = totalItems,
+            PageIndex = queryParameters.PageIndex,
+            PageSize = queryParameters.PageSize,
+            TotalPages = (int)Math.Ceiling(totalItems / (double)queryParameters.PageSize),
+            Items = items
+        };
     }
+
 
     public CourseViewModel GetCourseById(int id)
     {

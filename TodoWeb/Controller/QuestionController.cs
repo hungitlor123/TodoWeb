@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using TodoWeb.Application.DTOs.Question;
 using TodoWeb.Application.Services;
+using TodoWeb.Appllication.Common;
+using TodoWeb.Appllication.Params;
 
 namespace TodoWeb.Controller;
 
@@ -49,9 +51,9 @@ public class QuestionController : ControllerBase
         return Ok(question);
     }
     [HttpGet]
-    public ActionResult GetQuestions()
+    public ActionResult<PagaResult<QuestionViewModel>> GetQuestions([FromQuery] QuestionQueryParameters queryParameters)
     {
-        var questions = _questionService.GetQuestions();
+        var questions = _questionService.GetQuestions(queryParameters);
         return Ok(questions);
     }
     [HttpPut("{id}")]

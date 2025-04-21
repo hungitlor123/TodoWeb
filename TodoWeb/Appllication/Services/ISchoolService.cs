@@ -1,4 +1,6 @@
 using TodoWeb.Application.DTOs;
+using TodoWeb.Appllication.Common;
+using TodoWeb.Appllication.Params;
 using TodoWeb.Domains.Entities;
 using TodoWeb.Infrastructures;
 
@@ -6,7 +8,7 @@ namespace TodoWeb.Application.Services;
 
 public interface ISchoolService
 {
-    IEnumerable<SchoolViewModel> GetAllSchools();
+    PagaResult<SchoolViewModel> GetAllSchools(SchoolQueryParameters queryParameters);
 
     SchoolViewModel GetSchoolById(int id);
 
@@ -28,17 +30,47 @@ public class SchoolService : ISchoolService
         _dbcontext = dbcontext;
     }
 
-    public IEnumerable<SchoolViewModel> GetAllSchools()
+    public PagaResult<SchoolViewModel> GetAllSchools(SchoolQueryParameters queryParameters)
     {
-        var schools = _dbcontext.School.Select(s => new SchoolViewModel
+        var query = _dbcontext.School.AsQueryable();
+
+        // Tìm kiếm theo tên hoặc địa chỉ
+        if (!string.IsNullOrWhiteSpace(queryParameters.Keyword))
         {
-            Id = s.Id,
-            Name = s.Name,
-            Address = s.Address,
-        }).ToList();
-        
-        return schools;
+            query = query.Where(s => s.Name.Contains(queryParameters.Keyword)
+                                     || s.Address.Contains(queryParameters.Keyword));
+        }
+
+        // Sắp xếp
+        query = queryParameters.SortBy.ToLower() switch
+        {
+            "name" => queryParameters.SortDesc ? query.OrderByDescending(s => s.Name) : query.OrderBy(s => s.Name),
+            "address" => queryParameters.SortDesc ? query.OrderByDescending(s => s.Address) : query.OrderBy(s => s.Address),
+            _ => queryParameters.SortDesc ? query.OrderByDescending(s => s.Id) : query.OrderBy(s => s.Id)
+        };
+
+        var totalItems = query.Count();
+
+        var items = query
+            .Skip((queryParameters.PageIndex - 1) * queryParameters.PageSize)
+            .Take(queryParameters.PageSize)
+            .Select(s => new SchoolViewModel
+            {
+                Id = s.Id,
+                Name = s.Name,
+                Address = s.Address
+            }).ToList();
+
+        return new PagaResult<SchoolViewModel>
+        {
+            TotalItems = totalItems,
+            PageIndex = queryParameters.PageIndex,
+            PageSize = queryParameters.PageSize,
+            TotalPages = (int)Math.Ceiling(totalItems / (double)queryParameters.PageSize),
+            Items = items
+        };
     }
+
 
 
     public SchoolViewModel GetSchoolById(int id)
