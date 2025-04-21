@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hJ3uDi6BkjE=",
+  "dgSpecHash": "c3GlRATaJvc=",
   "success": true,
-  "projectFilePath": "E:\\Hoc\\.Net\\Ok\\TodoWeb1\\TodoWeb\\TodoWeb.csproj",
+  "projectFilePath": "E:\\Hoc\\.Net\\Ok\\TodoWeb\\TodoWeb\\TodoWeb.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\84973\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\84973\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
