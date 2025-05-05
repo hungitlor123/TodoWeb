@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using TodoWeb.Application.DTOs;
 using TodoWeb.Application.Services;
+using TodoWeb.Appllication.ActionFilters;
 using TodoWeb.Appllication.Common;
 using TodoWeb.Appllication.Params;
 using TodoWeb.Domains.Entities;
@@ -8,6 +9,8 @@ using TodoWeb.Domains.Entities;
 namespace TodoWeb.Controller;
 [ApiController]
 [Route("[controller]")]
+[TypeFilter(typeof(LogFilter), Arguments = [LogLevel.Warning, 111])]
+[AuditFilter]
 public class CourseController : ControllerBase
 {
     private readonly ICourseService _courseService;
@@ -24,6 +27,7 @@ public class CourseController : ControllerBase
         var result = _courseService.GetAllCourses(queryParameters);
         return Ok(result);
     }
+    [TypeFilter(typeof(CacheFilter), Arguments = [10])]
     [HttpGet("{id}")]
     public ActionResult<CourseViewModel> GetCourseById(int id)
     {

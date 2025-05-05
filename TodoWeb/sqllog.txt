@@ -152,3 +152,56 @@ WHERE [c].[DeletedAt] IS NULL AND [c].[Id] = @__id_0
 2025-05-05 11:58:14 | 67 ms | SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[Name], [c].[StartDate], [c].[UpdatedAt], [c].[UpdatedBy]
 FROM [Course] AS [c]
 WHERE [c].[DeletedAt] IS NULL AND [c].[Id] = @__id_0
+2025-05-05 14:38:10 | 64 ms | SELECT COUNT(*)
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL
+2025-05-05 14:38:10 | 39 ms | SELECT [c].[Id] AS [CourseId], [c].[Name] AS [CourseName], [c].[StartDate]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL
+ORDER BY [c].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-05-05 14:39:11 | 33 ms | SELECT COUNT(*)
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL
+2025-05-05 14:39:11 | 26 ms | SELECT [c].[Id] AS [CourseId], [c].[Name] AS [CourseName], [c].[StartDate]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL
+ORDER BY [c].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-05-05 14:40:11 | 39 ms | SELECT COUNT(*)
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL
+2025-05-05 14:40:11 | 31 ms | SELECT [c].[Id] AS [CourseId], [c].[Name] AS [CourseName], [c].[StartDate]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL
+ORDER BY [c].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-05-05 14:42:08 | 34 ms | SELECT COUNT(*)
+FROM [Exam] AS [e]
+2025-05-05 14:42:08 | 25 ms | SELECT [e].[Id], [e].[CourseId], [e].[QuestionIds], [e].[ExamDate], [e].[TimeLimitInMinutes], [e].[Name]
+FROM [Exam] AS [e]
+ORDER BY [e].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-05-05 15:17:31 | 32 ms | SELECT COUNT(*)
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL
+2025-05-05 15:17:31 | 14 ms | SELECT [c].[Id] AS [CourseId], [c].[Name] AS [CourseName], [c].[StartDate]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL
+ORDER BY [c].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-05-05 15:43:19 | 50 ms | SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[Name], [c].[StartDate], [c].[UpdatedAt], [c].[UpdatedBy]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL AND [c].[Id] = @__id_0
+2025-05-05 15:43:58 | 38 ms | SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[Name], [c].[StartDate], [c].[UpdatedAt], [c].[UpdatedBy]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL AND [c].[Id] = @__id_0
+2025-05-05 15:44:17 | 53 ms | SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[Name], [c].[StartDate], [c].[UpdatedAt], [c].[UpdatedBy]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL AND [c].[Id] = @__id_0
+2025-05-05 16:07:19 | 101 ms | SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[Name], [c].[StartDate], [c].[UpdatedAt], [c].[UpdatedBy]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL AND [c].[Id] = @__id_0
+2025-05-05 16:30:01 | 63 ms | SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[Name], [c].[StartDate], [c].[UpdatedAt], [c].[UpdatedBy]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL AND [c].[Id] = @__id_0

@@ -1,30 +1,42 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\Hoc\\.Net\\Ok\\TodoWeb1\\",
+  "WorkspaceRootPath": "E:\\Hoc\\.Net\\Ok\\TodoWeb\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|e:\\hoc\\.net\\ok\\todoweb1\\todoweb\\infrastructures\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|solutionrelative:todoweb\\infrastructures\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|e:\\hoc\\.net\\ok\\todoweb\\todoweb\\appllication\\actionfilters\\cachefilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|solutionrelative:todoweb\\appllication\\actionfilters\\cachefilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|e:\\hoc\\.net\\ok\\todoweb1\\todoweb\\domains\\entities\\studentgrade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|solutionrelative:todoweb\\domains\\entities\\studentgrade.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|e:\\hoc\\.net\\ok\\todoweb\\todoweb\\controller\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|solutionrelative:todoweb\\controller\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|e:\\hoc\\.net\\ok\\todoweb1\\todoweb\\domains\\entities\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|solutionrelative:todoweb\\domains\\entities\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|e:\\hoc\\.net\\ok\\todoweb\\todoweb\\appllication\\services\\cacheservice\\cachedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|solutionrelative:todoweb\\appllication\\services\\cacheservice\\cachedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|e:\\hoc\\.net\\ok\\todoweb1\\todoweb\\appllication\\services\\ischoolservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|solutionrelative:todoweb\\appllication\\services\\ischoolservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|e:\\hoc\\.net\\ok\\todoweb\\todoweb\\appllication\\actionfilters\\auditfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|solutionrelative:todoweb\\appllication\\actionfilters\\auditfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|e:\\hoc\\.net\\ok\\todoweb1\\todoweb\\infrastructures\\iapplicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|solutionrelative:todoweb\\infrastructures\\iapplicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|e:\\hoc\\.net\\ok\\todoweb\\todoweb\\appllication\\services\\cacheservice\\cacheservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|solutionrelative:todoweb\\appllication\\services\\cacheservice\\cacheservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|e:\\hoc\\.net\\ok\\todoweb1\\todoweb\\domains\\entities\\auditlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|solutionrelative:todoweb\\domains\\entities\\auditlog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|e:\\hoc\\.net\\ok\\todoweb\\todoweb\\appllication\\services\\cacheservice\\icacheservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|solutionrelative:todoweb\\appllication\\services\\cacheservice\\icacheservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|e:\\hoc\\.net\\ok\\todoweb\\todoweb\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|solutionrelative:todoweb\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|e:\\hoc\\.net\\ok\\todoweb\\todoweb\\appllication\\actionfilters\\logfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|solutionrelative:todoweb\\appllication\\actionfilters\\logfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|e:\\hoc\\.net\\ok\\todoweb\\todoweb\\appllication\\actionfilters\\testfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3C760E6D-E9EE-4D19-ADD0-53F78613D652}|TodoWeb\\TodoWeb.csproj|solutionrelative:todoweb\\appllication\\actionfilters\\testfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,76 +58,120 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "StudentGrade.cs",
-              "DocumentMoniker": "E:\\Hoc\\.Net\\Ok\\TodoWeb1\\TodoWeb\\Domains\\Entities\\StudentGrade.cs",
-              "RelativeDocumentMoniker": "TodoWeb\\Domains\\Entities\\StudentGrade.cs",
-              "ToolTip": "E:\\Hoc\\.Net\\Ok\\TodoWeb1\\TodoWeb\\Domains\\Entities\\StudentGrade.cs",
-              "RelativeToolTip": "TodoWeb\\Domains\\Entities\\StudentGrade.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 4,
+              "Title": "CacheService.cs",
+              "DocumentMoniker": "E:\\Hoc\\.Net\\Ok\\TodoWeb\\TodoWeb\\Appllication\\Services\\CacheService\\CacheService.cs",
+              "RelativeDocumentMoniker": "TodoWeb\\Appllication\\Services\\CacheService\\CacheService.cs",
+              "ToolTip": "E:\\Hoc\\.Net\\Ok\\TodoWeb\\TodoWeb\\Appllication\\Services\\CacheService\\CacheService.cs",
+              "RelativeToolTip": "TodoWeb\\Appllication\\Services\\CacheService\\CacheService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T14:10:18.409Z"
+              "WhenOpened": "2025-05-05T08:36:47.261Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Student.cs",
-              "DocumentMoniker": "E:\\Hoc\\.Net\\Ok\\TodoWeb1\\TodoWeb\\Domains\\Entities\\Student.cs",
-              "RelativeDocumentMoniker": "TodoWeb\\Domains\\Entities\\Student.cs",
-              "ToolTip": "E:\\Hoc\\.Net\\Ok\\TodoWeb1\\TodoWeb\\Domains\\Entities\\Student.cs",
-              "RelativeToolTip": "TodoWeb\\Domains\\Entities\\Student.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "CacheData.cs",
+              "DocumentMoniker": "E:\\Hoc\\.Net\\Ok\\TodoWeb\\TodoWeb\\Appllication\\Services\\CacheService\\CacheData.cs",
+              "RelativeDocumentMoniker": "TodoWeb\\Appllication\\Services\\CacheService\\CacheData.cs",
+              "ToolTip": "E:\\Hoc\\.Net\\Ok\\TodoWeb\\TodoWeb\\Appllication\\Services\\CacheService\\CacheData.cs",
+              "RelativeToolTip": "TodoWeb\\Appllication\\Services\\CacheService\\CacheData.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T14:10:18.969Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "IApplicationDbContext.cs",
-              "DocumentMoniker": "E:\\Hoc\\.Net\\Ok\\TodoWeb1\\TodoWeb\\Infrastructures\\IApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "TodoWeb\\Infrastructures\\IApplicationDbContext.cs",
-              "ToolTip": "E:\\Hoc\\.Net\\Ok\\TodoWeb1\\TodoWeb\\Infrastructures\\IApplicationDbContext.cs",
-              "RelativeToolTip": "TodoWeb\\Infrastructures\\IApplicationDbContext.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABMAAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T14:03:53.616Z"
+              "WhenOpened": "2025-05-05T08:34:17.687Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "AuditLog.cs",
-              "DocumentMoniker": "E:\\Hoc\\.Net\\Ok\\TodoWeb1\\TodoWeb\\Domains\\Entities\\AuditLog.cs",
-              "RelativeDocumentMoniker": "TodoWeb\\Domains\\Entities\\AuditLog.cs",
-              "ToolTip": "E:\\Hoc\\.Net\\Ok\\TodoWeb1\\TodoWeb\\Domains\\Entities\\AuditLog.cs",
-              "RelativeToolTip": "TodoWeb\\Domains\\Entities\\AuditLog.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAA5wA4AAAAFAAAA",
+              "Title": "ICacheService.cs",
+              "DocumentMoniker": "E:\\Hoc\\.Net\\Ok\\TodoWeb\\TodoWeb\\Appllication\\Services\\CacheService\\ICacheService.cs",
+              "RelativeDocumentMoniker": "TodoWeb\\Appllication\\Services\\CacheService\\ICacheService.cs",
+              "ToolTip": "E:\\Hoc\\.Net\\Ok\\TodoWeb\\TodoWeb\\Appllication\\Services\\CacheService\\ICacheService.cs",
+              "RelativeToolTip": "TodoWeb\\Appllication\\Services\\CacheService\\ICacheService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T14:01:59.687Z"
+              "WhenOpened": "2025-05-05T08:33:41.527Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "E:\\Hoc\\.Net\\Ok\\TodoWeb1\\TodoWeb\\Infrastructures\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "TodoWeb\\Infrastructures\\ApplicationDbContext.cs",
-              "ToolTip": "E:\\Hoc\\.Net\\Ok\\TodoWeb1\\TodoWeb\\Infrastructures\\ApplicationDbContext.cs",
-              "RelativeToolTip": "TodoWeb\\Infrastructures\\ApplicationDbContext.cs",
-              "ViewState": "AQIAAEEAAAAAAAAAAAAQwE8AAAAAAAAA",
+              "Title": "CacheFilter.cs",
+              "DocumentMoniker": "E:\\Hoc\\.Net\\Ok\\TodoWeb\\TodoWeb\\Appllication\\ActionFilters\\CacheFilter.cs",
+              "RelativeDocumentMoniker": "TodoWeb\\Appllication\\ActionFilters\\CacheFilter.cs",
+              "ToolTip": "E:\\Hoc\\.Net\\Ok\\TodoWeb\\TodoWeb\\Appllication\\ActionFilters\\CacheFilter.cs",
+              "RelativeToolTip": "TodoWeb\\Appllication\\ActionFilters\\CacheFilter.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwA4AAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T13:58:54.489Z",
+              "WhenOpened": "2025-05-05T08:28:19.674Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "ISchoolService.cs",
-              "DocumentMoniker": "E:\\Hoc\\.Net\\Ok\\TodoWeb1\\TodoWeb\\Appllication\\Services\\ISchoolService.cs",
-              "RelativeDocumentMoniker": "TodoWeb\\Appllication\\Services\\ISchoolService.cs",
-              "ToolTip": "E:\\Hoc\\.Net\\Ok\\TodoWeb1\\TodoWeb\\Appllication\\Services\\ISchoolService.cs",
-              "RelativeToolTip": "TodoWeb\\Appllication\\Services\\ISchoolService.cs",
-              "ViewState": "AQIAADAAAAAAAAAAAAAkwD4AAAAIAAAA",
+              "Title": "AuditFilter.cs",
+              "DocumentMoniker": "E:\\Hoc\\.Net\\Ok\\TodoWeb\\TodoWeb\\Appllication\\ActionFilters\\AuditFilter.cs",
+              "RelativeDocumentMoniker": "TodoWeb\\Appllication\\ActionFilters\\AuditFilter.cs",
+              "ToolTip": "E:\\Hoc\\.Net\\Ok\\TodoWeb\\TodoWeb\\Appllication\\ActionFilters\\AuditFilter.cs",
+              "RelativeToolTip": "TodoWeb\\Appllication\\ActionFilters\\AuditFilter.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-07T13:57:21.691Z"
+              "WhenOpened": "2025-05-05T08:19:35.896Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\Hoc\\.Net\\Ok\\TodoWeb\\TodoWeb\\Program.cs",
+              "RelativeDocumentMoniker": "TodoWeb\\Program.cs",
+              "ToolTip": "E:\\Hoc\\.Net\\Ok\\TodoWeb\\TodoWeb\\Program.cs",
+              "RelativeToolTip": "TodoWeb\\Program.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAAACIAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T07:50:16.013Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CourseController.cs",
+              "DocumentMoniker": "E:\\Hoc\\.Net\\Ok\\TodoWeb\\TodoWeb\\Controller\\CourseController.cs",
+              "RelativeDocumentMoniker": "TodoWeb\\Controller\\CourseController.cs",
+              "ToolTip": "E:\\Hoc\\.Net\\Ok\\TodoWeb\\TodoWeb\\Controller\\CourseController.cs",
+              "RelativeToolTip": "TodoWeb\\Controller\\CourseController.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAgwB0AAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T07:49:51.242Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LogFilter.cs",
+              "DocumentMoniker": "E:\\Hoc\\.Net\\Ok\\TodoWeb\\TodoWeb\\Appllication\\ActionFilters\\LogFilter.cs",
+              "RelativeDocumentMoniker": "TodoWeb\\Appllication\\ActionFilters\\LogFilter.cs",
+              "ToolTip": "E:\\Hoc\\.Net\\Ok\\TodoWeb\\TodoWeb\\Appllication\\ActionFilters\\LogFilter.cs",
+              "RelativeToolTip": "TodoWeb\\Appllication\\ActionFilters\\LogFilter.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAQwBUAAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T07:44:20.317Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TestFilter.cs",
+              "DocumentMoniker": "E:\\Hoc\\.Net\\Ok\\TodoWeb\\TodoWeb\\Appllication\\ActionFilters\\TestFilter.cs",
+              "RelativeDocumentMoniker": "TodoWeb\\Appllication\\ActionFilters\\TestFilter.cs",
+              "ToolTip": "E:\\Hoc\\.Net\\Ok\\TodoWeb\\TodoWeb\\Appllication\\ActionFilters\\TestFilter.cs",
+              "RelativeToolTip": "TodoWeb\\Appllication\\ActionFilters\\TestFilter.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAgwBgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-05T07:39:43.622Z",
+              "EditorCaption": ""
             }
           ]
         }
