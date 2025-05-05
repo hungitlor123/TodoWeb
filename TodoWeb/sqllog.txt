@@ -134,3 +134,21 @@ WHERE [c].[DeletedAt] IS NULL AND [c].[Name] LIKE @__queryParameters_Keyword_0_c
 2025-04-21 17:21:45 | 3 ms | SELECT COUNT(*)
 FROM [Course] AS [c]
 WHERE [c].[DeletedAt] IS NULL
+2025-04-25 20:51:15 | 80 ms | SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[Name], [c].[StartDate], [c].[UpdatedAt], [c].[UpdatedBy]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL AND [c].[Id] = @__id_0
+2025-04-25 20:51:18 | 7 ms | SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[Name], [c].[StartDate], [c].[UpdatedAt], [c].[UpdatedBy]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL AND [c].[Id] = @__id_0
+2025-04-25 20:51:57 | 65 ms | SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[Name], [c].[StartDate], [c].[UpdatedAt], [c].[UpdatedBy]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL AND [c].[Id] = @__id_0
+2025-04-25 20:52:00 | 3 ms | SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[Name], [c].[StartDate], [c].[UpdatedAt], [c].[UpdatedBy]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL AND [c].[Id] = @__id_0
+2025-04-25 20:52:02 | 3 ms | SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[Name], [c].[StartDate], [c].[UpdatedAt], [c].[UpdatedBy]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL AND [c].[Id] = @__id_0
+2025-05-05 11:58:14 | 67 ms | SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[Name], [c].[StartDate], [c].[UpdatedAt], [c].[UpdatedBy]
+FROM [Course] AS [c]
+WHERE [c].[DeletedAt] IS NULL AND [c].[Id] = @__id_0

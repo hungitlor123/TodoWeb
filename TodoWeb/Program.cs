@@ -1,5 +1,6 @@
 ﻿using TodoWeb.Application.Services;
 using TodoWeb.Appllication.MapperProfiles;
+using TodoWeb.Appllication.Middleware;
 using TodoWeb.Infrastructures;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,7 +25,8 @@ builder.Services.AddScoped<ICourseService, CourseService>();
 builder.Services.AddScoped<IStudentGradeService, StudentGradeService>();
 builder.Services.AddScoped<IExamService, ExamService>();
 builder.Services.AddScoped<IQuestionService, QuestionService>();
-
+builder.Services.AddSingleton<LogMiddleware>();
+builder.Services.AddSingleton<RateLimitMiddleware>();
 builder.Services.AddAutoMapper(typeof(TodoProfile));
 
 var app = builder.Build();
@@ -35,11 +37,35 @@ var app = builder.Build();
     app.UseSwaggerUI();
 
 
+/*
+app.UseExceptionHandler("/Error");
+*/
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.Use(async (context, next) =>
+{
+    Console.WriteLine("Request: " + context.Request.Method + " " + context.Request.Path);
+    await next();
+    Console.WriteLine("Reponse" + context.Response.StatusCode);
+
+});
+
+app.Use(async (context, next) =>
+{
+    Console.WriteLine("Request: " + context.Request.Method + " " + context.Request.Path);
+    await next();
+    Console.WriteLine("Reponse" + context.Response.StatusCode);
+
+});
+app.UseMiddleware<LogMiddleware>();
+app.UseMiddleware<RateLimitMiddleware>();
+
+
 
 app.Run();
 
