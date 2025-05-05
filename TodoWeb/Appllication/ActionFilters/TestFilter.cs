@@ -2,15 +2,25 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace TodoWeb.Appllication.ActionFilters;
 
-public class TestFilter : IActionFilter
+public class TestFilter : IActionFilter, IResultFilter
 {
     public void OnActionExecuting(ActionExecutingContext context)
     {
-        throw new NotImplementedException();
+        Console.WriteLine("OnActionExecuted");
     }
 
     public void OnActionExecuted(ActionExecutedContext context)
     {
-        throw new NotImplementedException();
+        Console.WriteLine("OnActionExecuting");
+    }
+
+    public void OnResultExecuting(ResultExecutingContext context)
+    {
+        Console.WriteLine("OnActionExecuted");
+    }
+
+    public void OnResultExecuted(ResultExecutedContext context)
+    {
+        Console.WriteLine("OnActionExecuting");
     }
 }

@@ -1,6 +1,8 @@
 ﻿using TodoWeb.Application.Services;
+using TodoWeb.Appllication.ActionFilters;
 using TodoWeb.Appllication.MapperProfiles;
 using TodoWeb.Appllication.Middleware;
+using TodoWeb.Appllication.Services.CacheService;
 using TodoWeb.Infrastructures;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +13,10 @@ builder.Services.AddControllers().AddJsonOptions(options =>
     options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
 });
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<TestFilter>();
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -27,6 +32,9 @@ builder.Services.AddScoped<IExamService, ExamService>();
 builder.Services.AddScoped<IQuestionService, QuestionService>();
 builder.Services.AddSingleton<LogMiddleware>();
 builder.Services.AddSingleton<RateLimitMiddleware>();
+builder.Services.AddSingleton<ICacheService, CacheService>();
+builder.Services.AddMemoryCache();
+//builder.Services.AddSingleton<LogFilter>();
 builder.Services.AddAutoMapper(typeof(TodoProfile));
 
 var app = builder.Build();
