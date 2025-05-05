@@ -102,5 +102,9 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
     {
             return base.Entry(entity);
     }
-    
+
+    public async Task<int> SaveChangesAsync()
+    {
+        return await base.SaveChangesAsync();
+    }
 }

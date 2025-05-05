@@ -11,10 +11,11 @@ namespace TodoWeb.Controller;
 public class CourseController : ControllerBase
 {
     private readonly ICourseService _courseService;
-
-    public CourseController(ICourseService courseService)
+    private readonly ILogger<CourseController> _logger; 
+    public CourseController(ICourseService courseService, ILogger<CourseController> logger)
     {
         _courseService = courseService;
+        _logger = logger;
     }
 
     [HttpGet]
@@ -24,10 +25,33 @@ public class CourseController : ControllerBase
         return Ok(result);
     }
     [HttpGet("{id}")]
-    public CourseViewModel GetCourseById(int id)
+    public ActionResult<CourseViewModel> GetCourseById(int id)
     {
-        return _courseService.GetCourseById(id);
+        _logger.LogInformation($"Get Course ID: {id}");
+
+        if (id == 10)
+        {
+            _logger.LogInformation($"Warninggggg: {id}");
+        }
+        
+        if (id <= 0)
+        {
+            _logger.LogWarning($"Error: {id} can not be less than 0");
+            throw new Exception("Error: ID cannot be less than 0");
+        }
+        
+        var course = _courseService.GetCourseById(id);
+
+        if (course == null)
+        {
+            _logger.LogWarning($"Course not found with ID: {id}");
+            return NotFound();
+        }
+        
+        return Ok(course);
     }
+
+
 
     [HttpGet("detail/{id}")]
     public CourseReponseModel Details(int id)
