@@ -1,5 +1,6 @@
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using TodoWeb.Application.DTOs;
 using TodoWeb.Appllication.Common;
 using TodoWeb.Appllication.Params;
@@ -11,6 +12,8 @@ namespace TodoWeb.Application.Services;
  public interface IStudentService
 {
     PagaResult<StudentViewModel> GetStudents(StudentQueryParameters queryParameters);
+
+     IEnumerable<StudentViewModel> GetStudents2();
 
      StudentCourseViewModel GetStudentDetails(int id);
 
@@ -26,12 +29,14 @@ namespace TodoWeb.Application.Services;
 public class StudentService : IStudentService
 {
     private readonly IApplicationDbContext _dbcontext;
+    private const string STUDENT_KEY = "STUDENT_LIST";
     private readonly IMapper _mapper;
-
-    public StudentService(IApplicationDbContext dbcontext, IMapper mapper)
+    private readonly IMemoryCache _cache;
+    public StudentService(IApplicationDbContext dbcontext, IMapper mapper, IMemoryCache cache)
     {
         _dbcontext = dbcontext;
         _mapper = mapper;
+        _cache = cache;
     }
 
     public PagaResult<StudentViewModel> GetStudents(StudentQueryParameters queryParameters)
@@ -109,6 +114,47 @@ public class StudentService : IStudentService
             SchoolName = student.School.Name,
         };
     }
+
+    public IEnumerable<StudentViewModel> GetStudents2()
+    {
+        // var data = _cache.Get<IEnumerable<StudentViewModel>>(STUDENT_KEY);
+        // if (data == null)
+        // {
+        //     data = GetAllStudents();
+        //     
+        //     var cacheOptions = new MemoryCacheEntryOptions()
+        //         .SetAbsoluteExpiration(TimeSpan.FromSeconds(30));
+        //     
+        //     _cache.Set(STUDENT_KEY, data, cacheOptions);
+        // }
+        // return data;
+        
+        
+        var data = _cache.GetOrCreate(STUDENT_KEY, entry =>
+        {
+            entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(30);
+            return GetAllStudents();
+        });
+
+        return data;
+    }
+
+    private IEnumerable<StudentViewModel> GetAllStudents()
+    {
+        var students = _dbcontext.Student
+            .Include(s => s.School)
+            .Select(s => new StudentViewModel
+            {
+                Id = s.Id,
+                FullName = s.FirstName + " " + s.LastName,
+                Age = s.Age,
+                SchoolName = s.School.Name,
+                Balance = s.Balance,
+            })
+            .ToList();
+        return students;
+    }
+    
 
     public StudentViewModel CreateStudent(StudentCreateViewModel studentCreateViewModel)
     {
