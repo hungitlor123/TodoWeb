@@ -13,6 +13,14 @@ public class StudentViewModel
     public decimal Balance { get; set; }
     
     
+    public List<string> Emails { get; set; } = new List<string>();
     
+    public Address Address { get; set; }
     
 }
+    public class Address
+    {
+        public string Street { get; set; }
+            
+        public string ZipCode { get; set; }
+    }

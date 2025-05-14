@@ -10,4 +10,11 @@ public class StudentCreateViewModel
     public DateTime DateOfBirth { get; set; }
     
     public int SchoolId { get; set; }
+    
+    public decimal Balance { get; set; }
+    
+    public List<string> Emails { get; set; } = new List<string>();
+    
+    public Address Address { get; set; }
+    
 }

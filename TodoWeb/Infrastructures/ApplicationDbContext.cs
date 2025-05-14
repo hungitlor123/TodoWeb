@@ -34,6 +34,8 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
 
     public DbSet<School> School { get; set; }
     
+    public DbSet<User> Users { get; set; }
+    
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -74,6 +76,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
 
         
         modelBuilder.ApplyConfiguration(new CourseMapping());
+        modelBuilder.ApplyConfiguration(new UserMapping());
         modelBuilder.Entity<Student>().HasQueryFilter(s => s.DeletedAt == null);
         modelBuilder.Entity<Course>().HasQueryFilter(c => c.DeletedAt == null);
 
