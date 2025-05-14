@@ -18,13 +18,15 @@ public class SchoolController : ControllerBase
         _schoolService = schoolService;
     }
 
-    [HttpGet]
+
     [HttpGet]
     public ActionResult<PagaResult<SchoolViewModel>> GetAllSchools([FromQuery] SchoolQueryParameters queryParameters)
     {
         var schools = _schoolService.GetAllSchools(queryParameters);
         return Ok(schools);
     }
+    
+ 
 
 
     [HttpGet("{id}")]

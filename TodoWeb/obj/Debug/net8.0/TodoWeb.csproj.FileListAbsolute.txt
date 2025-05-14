@@ -346,3 +346,6 @@ E:\Hoc\.Net\Ok\TodoWeb1\TodoWeb\obj\Debug\net8.0\TodoWeb.genruntimeconfig.cache
 E:\Hoc\.Net\Ok\TodoWeb1\TodoWeb\obj\Debug\net8.0\ref\TodoWeb.dll
 E:\Hoc\.Net\Ok\TodoWeb\TodoWeb\bin\Debug\net8.0\AutoMapper.dll
 E:\Hoc\.Net\Ok\TodoWeb\TodoWeb\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+E:\Hoc\.Net\Ok\TodoWeb\TodoWeb\bin\Debug\net8.0\FluentValidation.dll
+E:\Hoc\.Net\Ok\TodoWeb\TodoWeb\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
+E:\Hoc\.Net\Ok\TodoWeb\TodoWeb\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll

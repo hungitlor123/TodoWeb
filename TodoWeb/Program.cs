@@ -4,6 +4,10 @@ using TodoWeb.Appllication.MapperProfiles;
 using TodoWeb.Appllication.Middleware;
 using TodoWeb.Appllication.Services.CacheService;
 using TodoWeb.Infrastructures;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using TodoWeb.Appllication.StudentValidator;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,7 +40,8 @@ builder.Services.AddSingleton<ICacheService, CacheService>();
 builder.Services.AddMemoryCache();
 //builder.Services.AddSingleton<LogFilter>();
 builder.Services.AddAutoMapper(typeof(TodoProfile));
-
+builder.Services.AddFluentValidationAutoValidation();
+builder.Services.AddValidatorsFromAssemblyContaining<StudentCreateValidator>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

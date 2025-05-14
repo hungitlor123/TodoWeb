@@ -205,3 +205,15 @@ WHERE [c].[DeletedAt] IS NULL AND [c].[Id] = @__id_0
 2025-05-05 16:30:01 | 63 ms | SELECT TOP(1) [c].[Id], [c].[CreatedAt], [c].[CreatedBy], [c].[DeletedAt], [c].[DeletedBy], [c].[Name], [c].[StartDate], [c].[UpdatedAt], [c].[UpdatedBy]
 FROM [Course] AS [c]
 WHERE [c].[DeletedAt] IS NULL AND [c].[Id] = @__id_0
+2025-05-05 20:34:29 | 53 ms | SELECT [s].[Id], COALESCE([s].[FirstName], N'') + N' ' + COALESCE([s].[Surname], N'') AS [FullName], [s].[Age], [s0].[Name] AS [SchoolName], [s].[Balance]
+FROM [Students] AS [s]
+INNER JOIN [School] AS [s0] ON [s].[SId] = [s0].[Id]
+WHERE [s].[DeletedAt] IS NULL
+2025-05-05 20:37:02 | 57 ms | SELECT [s].[Id], COALESCE([s].[FirstName], N'') + N' ' + COALESCE([s].[Surname], N'') AS [FullName], [s].[Age], [s0].[Name] AS [SchoolName], [s].[Balance]
+FROM [Students] AS [s]
+INNER JOIN [School] AS [s0] ON [s].[SId] = [s0].[Id]
+WHERE [s].[DeletedAt] IS NULL
+2025-05-05 20:38:05 | 15 ms | SELECT [s].[Id], COALESCE([s].[FirstName], N'') + N' ' + COALESCE([s].[Surname], N'') AS [FullName], [s].[Age], [s0].[Name] AS [SchoolName], [s].[Balance]
+FROM [Students] AS [s]
+INNER JOIN [School] AS [s0] ON [s].[SId] = [s0].[Id]
+WHERE [s].[DeletedAt] IS NULL

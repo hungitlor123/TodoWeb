@@ -23,7 +23,14 @@ public class StudentController : ControllerBase
     {
         return _studentService.GetStudentDetails(id);
     }
-
+    
+    [HttpGet("GetStudents2")]
+    public IEnumerable<StudentViewModel> GetStudent2()
+    {
+        return _studentService.GetStudents2();
+    }
+    
+    
     [HttpGet]
     public ActionResult<PagaResult<StudentViewModel>> GetStudents([FromQuery] StudentQueryParameters queryParameters)
     {
@@ -39,9 +46,10 @@ public class StudentController : ControllerBase
     }
 
     [HttpPost]
-    public StudentViewModel CreateStudent(StudentCreateViewModel studentCreateViewModel)
+    public IActionResult CreateStudent(StudentCreateViewModel studentCreateViewModel)
     {
-        return _studentService.CreateStudent(studentCreateViewModel);
+        var result = _studentService.CreateStudent(studentCreateViewModel);
+        return Ok(result);
     }
 
     [HttpPut("{id}")]
