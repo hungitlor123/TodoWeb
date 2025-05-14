@@ -25,6 +25,8 @@ public interface IApplicationDbContext
     
     public DbSet<AuditLog> AuditLog { get; set; }
     
+    public DbSet<User> Users { get; set; }
+    
     public EntityEntry<T> Entry<T>(T entity) where T : class;
 
     public int SaveChanges();

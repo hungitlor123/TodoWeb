@@ -349,3 +349,4 @@ E:\Hoc\.Net\Ok\TodoWeb\TodoWeb\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.
 E:\Hoc\.Net\Ok\TodoWeb\TodoWeb\bin\Debug\net8.0\FluentValidation.dll
 E:\Hoc\.Net\Ok\TodoWeb\TodoWeb\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
 E:\Hoc\.Net\Ok\TodoWeb\TodoWeb\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
+E:\Hoc\.Net\Ok\TodoWeb\TodoWeb\bin\Debug\net8.0\BCrypt.Net-Next.dll

@@ -3,6 +3,7 @@ using TodoWeb.Application.DTOs;
 using TodoWeb.Application.DTOs.Exam;
 using TodoWeb.Application.DTOs.ExamResult;
 using TodoWeb.Application.DTOs.Question;
+using TodoWeb.Application.DTOs.UserModel;
 using TodoWeb.Domains.Entities;
 
 namespace TodoWeb.Appllication.MapperProfiles;
@@ -55,6 +56,8 @@ public class TodoProfile : Profile
         CreateMap<ExamResult, ExamResultViewModel>();
         CreateMap<ExamResultUpdateModel, ExamResult>()
             .ForMember(dest => dest.Id, opt => opt.Ignore());
+        //User
+        CreateMap<UserCreateModel, User>();
     }
     
     
