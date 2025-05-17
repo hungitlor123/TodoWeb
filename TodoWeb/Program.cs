@@ -46,6 +46,15 @@ builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddValidatorsFromAssemblyContaining<StudentCreateValidator>();
 // builder.Services.AddValidatorsFromAssemblyContaining<UserValidator>();
 // builder.Services.AddValidatorsFromAssemblyContaining<AddressValidatior>();
+
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+    {
+        options.IdleTimeout = TimeSpan.FromMinutes(30);
+        options.Cookie.HttpOnly = true;
+        options.Cookie.IsEssential = true;
+    }); 
+    
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -59,6 +68,8 @@ app.UseExceptionHandler("/Error");
 */
 
 app.UseHttpsRedirection();
+
+app.UseSession();
 
 app.UseAuthorization();
 

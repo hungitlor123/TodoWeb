@@ -292,3 +292,59 @@ WHERE [u].[EmailAddress] = @__userLoginModel_EmailAddress_0
 2025-05-14 19:25:05 | 5 ms | SELECT TOP(1) [u].[Id], [u].[EmailAddress], [u].[FullName], [u].[Password], [u].[Role], [u].[Salting]
 FROM [Users] AS [u]
 WHERE [u].[EmailAddress] = @__userLoginModel_EmailAddress_0
+2025-05-14 19:59:48 | 53 ms | SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Users] ([EmailAddress], [FullName], [Password], [Role], [Salting])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+
+2025-05-14 19:59:48 | 7 ms | SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [AuditLog] ([Action], [CreateAt], [EntityName], [NewValue], [OldValue])
+OUTPUT INSERTED.[Id]
+VALUES (@p0, @p1, @p2, @p3, @p4);
+
+2025-05-14 20:00:14 | 7 ms | SELECT TOP(1) [u].[Id], [u].[EmailAddress], [u].[FullName], [u].[Password], [u].[Role], [u].[Salting]
+FROM [Users] AS [u]
+WHERE [u].[EmailAddress] = @__userLoginModel_EmailAddress_0
+2025-05-14 20:00:19 | 3 ms | SELECT TOP(1) [u].[Id], [u].[EmailAddress], [u].[FullName], [u].[Password], [u].[Role], [u].[Salting]
+FROM [Users] AS [u]
+WHERE [u].[EmailAddress] = @__userLoginModel_EmailAddress_0
+2025-05-14 20:16:25 | 65 ms | SELECT TOP(1) [u].[Id], [u].[EmailAddress], [u].[FullName], [u].[Password], [u].[Role], [u].[Salting]
+FROM [Users] AS [u]
+WHERE [u].[EmailAddress] = @__userLoginModel_EmailAddress_0
+2025-05-14 20:16:31 | 6 ms | SELECT COUNT(*)
+FROM [School] AS [s]
+2025-05-14 20:16:31 | 3 ms | SELECT [s].[Id], [s].[Name], [s].[Address]
+FROM [School] AS [s]
+ORDER BY [s].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-05-14 20:17:07 | 75 ms | SELECT TOP(1) [u].[Id], [u].[EmailAddress], [u].[FullName], [u].[Password], [u].[Role], [u].[Salting]
+FROM [Users] AS [u]
+WHERE [u].[EmailAddress] = @__userLoginModel_EmailAddress_0
+2025-05-14 20:17:31 | 7 ms | SELECT COUNT(*)
+FROM [School] AS [s]
+2025-05-14 20:17:31 | 4 ms | SELECT [s].[Id], [s].[Name], [s].[Address]
+FROM [School] AS [s]
+ORDER BY [s].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-05-14 20:18:08 | 5 ms | SELECT COUNT(*)
+FROM [School] AS [s]
+2025-05-14 20:18:40 | 4 ms | SELECT COUNT(*)
+FROM [School] AS [s]
+2025-05-14 20:18:40 | 4 ms | SELECT [s].[Id], [s].[Name], [s].[Address]
+FROM [School] AS [s]
+ORDER BY [s].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-05-14 20:19:32 | 4 ms | SELECT COUNT(*)
+FROM [School] AS [s]
+2025-05-14 20:19:32 | 3 ms | SELECT [s].[Id], [s].[Name], [s].[Address]
+FROM [School] AS [s]
+ORDER BY [s].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-05-14 20:21:33 | 10 ms | SELECT COUNT(*)
+FROM [School] AS [s]
+2025-05-14 20:21:33 | 6 ms | SELECT [s].[Id], [s].[Name], [s].[Address]
+FROM [School] AS [s]
+ORDER BY [s].[Id]
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY

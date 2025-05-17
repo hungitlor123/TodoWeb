@@ -1,13 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using TodoWeb.Application.DTOs;
 using TodoWeb.Application.Services;
 using TodoWeb.Appllication.Common;
 using TodoWeb.Appllication.Params;
+using TodoWeb.Constants.Enums;
 
 namespace TodoWeb.Controller;
 
 [ApiController]
 [Route("[controller]")]
+[TypeFilter(typeof(AuthorizeFilter), Arguments = [$"{nameof(Role.Admin)},{nameof(Role.Student)}"])]
 
 public class SchoolController : ControllerBase
 {
@@ -22,7 +25,14 @@ public class SchoolController : ControllerBase
     [HttpGet]
     public ActionResult<PagaResult<SchoolViewModel>> GetAllSchools([FromQuery] SchoolQueryParameters queryParameters)
     {
+        var userId = HttpContext.Session.GetInt32("UserId");
+        if (userId == null)
+        {
+            return Unauthorized();
+        }
+        
         var schools = _schoolService.GetAllSchools(queryParameters);
+        
         return Ok(schools);
     }
     

@@ -30,15 +30,27 @@ public class UserController : ControllerBase
     [HttpPost("Login")]
     public IActionResult Login(UserLoginModel userLoginModel)
     {
-        var isExist = _userService.Login(userLoginModel);
-        if (isExist)
+        var user =  _userService.Login(userLoginModel);
+        
+        if (user == null)
         {
-            return Ok("Login success");
+            return BadRequest("Email or password is wrong");
         }
-        return BadRequest("Login failed");
+        
+        HttpContext.Session.SetInt32("UserId", user.Id);
+        HttpContext.Session.SetString("Role", user.Role.ToString());
+
+        return Ok("Login success");
     }
-    // public IActionResult Logout()
-    // {
-    //     return Ok();
-    // }
+    [HttpPost("Logout")]
+    public IActionResult Logout()
+    {
+        HttpContext.Session.Clear();
+        return Ok();
+    }
+
+    public IActionResult TranserMoney(int userId, decimal money)
+    {
+        return Ok();
+    }
 }
