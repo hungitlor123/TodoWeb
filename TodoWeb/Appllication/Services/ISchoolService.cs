@@ -76,7 +76,7 @@ public class SchoolService : ISchoolService
     public SchoolViewModel GetSchoolById(int id)
     {
         var school = _dbcontext.School.FirstOrDefault(s => s.Id == id);
-
+        
         return new SchoolViewModel
         {
             Id = school.Id,

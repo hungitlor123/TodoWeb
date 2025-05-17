@@ -35,19 +35,23 @@ public class UserService : IUserService
         return user.Id;
     }
 
-    public bool Login(UserLoginModel userLoginModel)
+    public User? Login(UserLoginModel userLoginModel)
     {
         var user = _dbContext.Users
             .FirstOrDefault(x => x.EmailAddress == userLoginModel.EmailAddress);
 
         if (user == null)
         {
-            return false;
+            return null;
         }
         var password = userLoginModel.Password + user.Salting;
-        
-        return HashHelper.VerifyPassword(password, user.Password);
 
+        if (!HashHelper.VerifyPassword(password, user.Password))
+        {
+            return null;
+        }
+
+        return user;
 
     }
 }
